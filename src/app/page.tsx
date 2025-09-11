@@ -124,7 +124,7 @@ export default function Home() {
           </h2>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-16">
             {partners.map((partner) => (
-              <div key={partner.name} title={partner.name} className="opacity-60 transition-opacity duration-300 hover:opacity-100">
+              <div key={partner.name} title={partner.name} className="text-foreground opacity-60 transition-opacity duration-300 hover:opacity-100">
                 {partner.logo}
               </div>
             ))}
