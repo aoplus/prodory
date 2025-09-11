@@ -181,22 +181,22 @@ export default function SopGenerator() {
               </TabsList>
               <TabsContent value="sop">
                 <Card className="mt-2">
-                  <CardContent className="p-6 prose dark:prose-invert max-w-none">
-                    <pre className="whitespace-pre-wrap bg-transparent p-0">{result.sop}</pre>
+                  <CardContent className="p-6">
+                    <pre className="whitespace-pre-wrap font-sans text-sm">{result.sop}</pre>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="runbook">
                 <Card className="mt-2">
-                  <CardContent className="p-6 prose dark:prose-invert max-w-none">
-                     <pre className="whitespace-pre-wrap bg-transparent p-0">{result.runbook}</pre>
+                  <CardContent className="p-6">
+                     <pre className="whitespace-pre-wrap font-sans text-sm">{result.runbook}</pre>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="training">
                 <Card className="mt-2">
-                  <CardContent className="p-6 prose dark:prose-invert max-w-none">
-                    <pre className="whitespace-pre-wrap bg-transparent p-0">{result.trainingVideoScript}</pre>
+                  <CardContent className="p-6">
+                    <pre className="whitespace-pre-wrap font-sans text-sm">{result.trainingVideoScript}</pre>
                   </CardContent>
                 </Card>
               </TabsContent>
