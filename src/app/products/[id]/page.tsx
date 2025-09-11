@@ -42,17 +42,17 @@ export default function ProductPage({ params }: { params: { id: string } }) {
         <div className="mx-auto mt-16 max-w-5xl">
           <div className="rounded-lg border bg-card p-8 shadow-sm">
             <h2 className="font-headline text-2xl font-semibold">Key Features</h2>
-            <p className="mt-2 text-muted-foreground">{product.description}</p>
-            <ul className="mt-8 space-y-4">
+            <p className="mt-2 text-muted-foreground">{product.longDescription}</p>
+            <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {product.features.map((feature, index) => (
                 <li key={index} className="flex items-start">
-                  <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-green-500" />
+                  <CheckCircle className="mr-3 h-6 w-6 flex-shrink-0 text-primary" />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
             <div className="mt-8">
-              <Button asChild>
+              <Button asChild size="lg">
                 <Link href="/contact">
                   Request a Demo <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -63,18 +63,8 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
         {/* Conditional SOP Generator */}
         {product.id === 'docsai' && (
-          <div className="mx-auto mt-16 max-w-5xl">
-            <div className="text-center">
-                <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Try Prodory DocsAI
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Instantly generate documentation from a description of your process.
-                </p>
-            </div>
-            <div className="mt-8">
-                <SopGenerator />
-            </div>
+          <div className="mx-auto mt-24 max-w-5xl">
+             <SopGenerator />
           </div>
         )}
       </div>
