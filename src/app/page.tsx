@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AwsLogo, GoogleLogo, RedHatLogo } from '@/components/icons';
 import { ArrowRight, CheckCircle, Cloudy, Bot, TestTube, BrainCircuit } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { products } from '@/lib/data';
 
 const differentiators = [
@@ -30,6 +29,8 @@ const productIcons: { [key: string]: React.ReactNode } = {
   agents: <Bot className="h-6 w-6 text-primary" />,
   testgen: <TestTube className="h-6 w-6 text-primary" />,
   aihub: <BrainCircuit className="h-6 w-6 text-primary" />,
+  'storage-autoscaler': <Cloudy className="h-6 w-6 text-primary" />,
+  'data-finops-agent': <BrainCircuit className="h-6 w-6 text-primary" />,
 };
 
 const partners = [
@@ -42,9 +43,10 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="bg-background py-20 md:py-32">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl">
+      <section className="relative overflow-hidden bg-background py-20 md:py-32">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(45,125,240,0.15)_0%,_transparent_40%)]"></div>
+        <div className="container relative mx-auto px-4 text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
             Intelligent Infrastructure.
             <br />
             <span className="text-primary">Made in India.</span>
@@ -68,9 +70,9 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {differentiators.map((item) => (
-              <div key={item.title} className="text-center">
+              <div key={item.title} className="rounded-lg border bg-card p-8 text-center transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10">
                 <div className="flex justify-center">{item.icon}</div>
-                <h3 className="mt-4 font-headline text-2xl font-semibold">{item.title}</h3>
+                <h3 className="mt-4 text-2xl font-semibold">{item.title}</h3>
                 <p className="mt-2 text-muted-foreground">{item.description}</p>
               </div>
             ))}
@@ -79,26 +81,26 @@ export default function Home() {
       </section>
 
       {/* Products Section */}
-      <section id="products" className="bg-muted/50 py-16 sm:py-24">
+      <section id="products" className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Product Suite</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Product Suite</h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
               A comprehensive set of tools to power your cloud and AI journey.
             </p>
           </div>
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {products.slice(0, 5).map((product) => (
-              <Card key={product.id} className="flex transform flex-col transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-                <CardHeader>
+            {products.slice(0, 6).map((product) => (
+              <Card key={product.id} className="group flex transform flex-col overflow-hidden bg-card transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10">
+                 <CardHeader>
                   <div className="flex items-center gap-4">
                     {productIcons[product.id]}
-                    <CardTitle className="font-headline">{product.title}</CardTitle>
+                    <CardTitle>{product.title}</CardTitle>
                   </div>
                 </CardHeader>
                 <CardContent className="flex flex-grow flex-col">
                   <p className="flex-grow text-muted-foreground">{product.tagline}</p>
-                  <Button asChild variant="link" className="mt-4 justify-start p-0">
+                  <Button asChild variant="link" className="mt-4 justify-start p-0 font-semibold text-primary/80 group-hover:text-primary">
                     <Link href={`/products/${product.id}`}>Learn More <ArrowRight className="ml-2 h-4 w-4" /></Link>
                   </Button>
                 </CardContent>
@@ -111,12 +113,12 @@ export default function Home() {
       {/* Partners Section */}
       <section className="py-16 sm:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-center font-headline text-2xl font-semibold text-foreground">
+          <h2 className="text-center text-2xl font-semibold text-foreground">
             Trusted by the best, in partnership with leaders
           </h2>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-16">
             {partners.map((partner) => (
-              <div key={partner.name} title={partner.name} className="grayscale transition-all duration-300 hover:grayscale-0">
+              <div key={partner.name} title={partner.name} className="opacity-60 transition-opacity duration-300 hover:opacity-100">
                 {partner.logo}
               </div>
             ))}
