@@ -1,10 +1,8 @@
 'use client';
 
-import { useFormState } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { generateSopAction, type FormState } from '@/app/products/docsai/actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -13,7 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Loader2, Sparkles } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { useEffect } from 'react';
+import { useState } from 'react';
 
 const formSchema = z.object({
   workflowDescription: z.string().min(20, 'Please provide a more detailed description (at least 20 characters).'),
@@ -21,8 +19,8 @@ const formSchema = z.object({
 });
 
 export default function SopGenerator() {
-  const initialState: FormState = { message: '', sop: '', runbook: '', trainingVideoScript: '' };
-  const [state, formAction] = useFormState(generateSopAction, initialState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -32,7 +30,7 @@ export default function SopGenerator() {
     },
   });
   
-  const { formState, setValue } = form;
+  const { setValue, formState } = form;
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -46,11 +44,14 @@ export default function SopGenerator() {
     }
   };
 
-  useEffect(() => {
-    if (state.message) {
-      // Potentially show a toast notification for errors
-    }
-  }, [state.message]);
+  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true);
+    setError('Document generation is disabled for this static demo. This feature requires a server.');
+    console.log('SOP Generation is disabled for static sites', values);
+    setTimeout(() => {
+        setIsSubmitting(false);
+    }, 1000);
+  };
 
 
   return (
@@ -61,7 +62,7 @@ export default function SopGenerator() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form action={formAction} className="space-y-8">
+          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
             <FormField
               control={form.control}
               name="workflowDescription"
@@ -93,8 +94,8 @@ export default function SopGenerator() {
               )}
             />
             
-            <Button type="submit" disabled={formState.isSubmitting}>
-              {formState.isSubmitting ? (
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   Generating...
@@ -109,46 +110,14 @@ export default function SopGenerator() {
           </form>
         </Form>
 
-        {state.message && (
+        {error && (
           <Alert variant="destructive" className="mt-8">
             <AlertTitle>Error</AlertTitle>
-            <AlertDescription>{state.message}</AlertDescription>
+            <AlertDescription>{error}</AlertDescription>
           </Alert>
         )}
 
-        {formState.isSubmitSuccessful && state.sop && (
-          <div className="mt-8">
-            <h3 className="font-headline text-xl font-semibold">Generated Documents</h3>
-            <Tabs defaultValue="sop" className="mt-4 w-full">
-              <TabsList>
-                <TabsTrigger value="sop">SOP</TabsTrigger>
-                <TabsTrigger value="runbook">Runbook</TabsTrigger>
-                <TabsTrigger value="script">Training Video Script</TabsTrigger>
-              </TabsList>
-              <TabsContent value="sop">
-                <Card className="max-h-[500px] overflow-y-auto">
-                  <CardContent className="p-6">
-                    <div className="prose prose-sm max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: state.sop.replace(/\n/g, '<br />') }} />
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="runbook">
-                <Card className="max-h-[500px] overflow-y-auto">
-                  <CardContent className="p-6">
-                    <div className="prose prose-sm max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: state.runbook.replace(/\n/g, '<br />') }} />
-                  </CardContent>
-                </Card>
-              </TabsContent>
-              <TabsContent value="script">
-                 <Card className="max-h-[500px] overflow-y-auto">
-                  <CardContent className="p-6">
-                    <div className="prose prose-sm max-w-none dark:prose-invert" dangerouslySetInnerHTML={{ __html: state.trainingVideoScript.replace(/\n/g, '<br />') }} />
-                  </CardContent>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </div>
-        )}
+        {/* The result display is removed as the action is disabled */}
       </CardContent>
     </Card>
   );
