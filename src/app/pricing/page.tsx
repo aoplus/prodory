@@ -3,8 +3,8 @@ import { PricingCard } from '@/components/pricing-card';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pricing | AO+ Cloud Platform',
-  description: 'Find the right plan for your team. AO+ Solutions offers flexible pricing from a free starter plan to enterprise solutions.',
+  title: 'Pricing | Prodory',
+  description: 'Find the right plan for your team. Prodory offers flexible pricing from a free starter plan to enterprise solutions.',
 };
 
 export default function PricingPage() {

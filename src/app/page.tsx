@@ -49,10 +49,10 @@ export default function Home() {
           <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
             Intelligent Infrastructure.
             <br />
-            <span className="text-primary">Made in India.</span>
+            <span className="text-primary">Made for you.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            AO+ Solutions provides AI-first cloud automation to help you innovate faster, optimize costs, and scale securely.
+            Prodory provides AI-first cloud automation to help you innovate faster, optimize costs, and scale securely.
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <Button asChild size="lg" className="font-bold">

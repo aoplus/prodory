@@ -30,10 +30,10 @@ export default function Footer() {
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2">
               <CloudLightning className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold">AO+ Solutions</span>
+              <span className="text-xl font-bold">Prodory</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
-              Intelligent Infrastructure. Made in India.
+              Intelligent Infrastructure.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-8 md:col-span-3 md:grid-cols-3">
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} AO+ Solutions Pvt Ltd. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Prodory by AO+ Solutions Pvt Ltd. All rights reserved.</p>
         </div>
       </div>
     </footer>

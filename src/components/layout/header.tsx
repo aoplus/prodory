@@ -25,7 +25,7 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-bold">
           <CloudLightning className="h-6 w-6 text-primary" />
-          <span className="text-lg font-semibold">AO+</span>
+          <span className="text-lg font-semibold">Prodory</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -63,7 +63,7 @@ export default function Header() {
               <div className="flex flex-col gap-6 p-4">
                 <Link href="/" className="flex items-center gap-2 font-bold" onClick={() => setSheetOpen(false)}>
                   <CloudLightning className="h-6 w-6 text-primary" />
-                  <span className="text-lg font-semibold">AO+</span>
+                  <span className="text-lg font-semibold">Prodory</span>
                 </Link>
                 <div className="flex flex-col gap-4">
                   {navLinks.map((link) => (

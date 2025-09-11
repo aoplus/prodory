@@ -4,8 +4,8 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us | AO+ Cloud Platform',
-  description: 'Learn about AO+ Solutions, our mission, our team, and our commitment to building intelligent infrastructure for India.',
+  title: 'About Us | Prodory',
+  description: 'Learn about Prodory, our mission, our team, and our commitment to building intelligent infrastructure.',
 };
 
 const partners = [
@@ -37,10 +37,10 @@ export default function AboutPage() {
         </div>
         <div className="relative mx-auto max-w-4xl px-4 text-center">
           <h1 className="font-headline text-4xl font-bold tracking-tight sm:text-6xl">
-            About AO+ Solutions
+            About Prodory
           </h1>
           <p className="mt-6 text-xl text-muted-foreground">
-            We are architects of intelligent, automated, and efficient cloud infrastructure, built for India.
+            We are architects of intelligent, automated, and efficient cloud infrastructure.
           </p>
         </div>
       </section>
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-primary">Our Mission</h2>
             <p className="mt-6 text-lg leading-8 text-muted-foreground">
-              AO+ Solutions was founded on the belief that Indian enterprises deserve world-class technology that is both powerful and cost-effective. We are a B2B IT and AI-first cloud automation startup dedicated to helping businesses navigate the complexities of the modern cloud landscape.
+              Prodory was founded on the belief that enterprises deserve world-class technology that is both powerful and cost-effective. We are a B2B IT and AI-first cloud automation startup dedicated to helping businesses navigate the complexities of the modern cloud landscape.
             </p>
             <p className="mt-4 text-lg leading-8 text-muted-foreground">
               Our mission is to empower organizations with intelligent infrastructure, enabling them to focus on innovation while we handle the automation, optimization, and security of their cloud environments. From FinOps to generative AI, we provide outcome-focused solutions that deliver tangible business value.
@@ -82,9 +82,9 @@ export default function AboutPage() {
             <div className="text-center lg:text-left">
               <h2 className="font-headline text-3xl font-bold">A Note from Our Founder</h2>
               <blockquote className="mt-6 border-l-4 border-primary pl-6 text-xl italic text-muted-foreground">
-                "We started AO+ with a simple goal: to democratize access to high-end cloud automation and AI. We saw too many companies struggling with rising costs and operational overhead. Our platform is our answer—a suite of tools built to give every Indian business a competitive edge in the global market."
+                "We started Prodory with a simple goal: to democratize access to high-end cloud automation and AI. We saw too many companies struggling with rising costs and operational overhead. Our platform is our answer—a suite of tools built to give every business a competitive edge in the global market."
               </blockquote>
-              <p className="mt-6 text-lg font-semibold text-foreground">— Founder, AO+ Solutions</p>
+              <p className="mt-6 text-lg font-semibold text-foreground">— Founder, Prodory</p>
             </div>
           </div>
         </div>

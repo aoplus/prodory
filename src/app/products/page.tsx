@@ -3,8 +3,8 @@ import { products } from '@/lib/data';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Products | AO+ Cloud Platform',
-  description: 'Explore the AO+ Solutions product suite, including CloudFinOps, DocsAI, AI Agents, TestGen, and our AI Hub.',
+  title: 'Products | Prodory',
+  description: 'Explore the Prodory product suite, including CloudFinOps, DocsAI, AI Agents, TestGen, and our AI Hub.',
 };
 
 export default function ProductsPage() {

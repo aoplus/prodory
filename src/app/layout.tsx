@@ -9,8 +9,8 @@ import { cn } from '@/lib/utils';
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'AO+ Cloud Platform | Intelligent Infrastructure. Made in India.',
-  description: 'AO+ Solutions is a B2B IT and AI-first cloud automation startup providing solutions for FinOps, DocsAI, AI Agents, and more.',
+  title: 'Prodory | Intelligent Infrastructure Solutions',
+  description: 'Prodory, a subsidiary of AO+ Solutions, provides AI-first cloud automation solutions for FinOps, DocsAI, AI Agents, and more.',
 };
 
 export default function RootLayout({

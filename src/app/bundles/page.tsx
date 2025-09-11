@@ -5,7 +5,7 @@ import type { Product } from '@/lib/types';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Product Bundles | AO+ Cloud Platform',
+  title: 'Product Bundles | Prodory',
   description: 'Explore our bundled solutions designed to accelerate your cloud and AI journey.',
 };
 

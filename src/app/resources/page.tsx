@@ -5,7 +5,7 @@ import { Download, BookOpen } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Resources | AO+ Cloud Platform',
+  title: 'Resources | Prodory',
   description: 'Explore our blog, case studies, and playbooks to learn more about cloud automation and AI.',
 };
 

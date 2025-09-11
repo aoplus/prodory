@@ -20,7 +20,7 @@ export function ROICalculator() {
   const estimatedSavings = useMemo(() => {
     const totalCost = storage * AVG_COST_PER_TB_PER_MONTH_USD;
     const wastedCost = totalCost * (overprovisioned / 100);
-    const potentialSavings = wastedCost * 0.7; // Assuming AO+ can save up to 70% of the wasted cost
+    const potentialSavings = wastedCost * 0.7; // Assuming Prodory can save up to 70% of the wasted cost
     return {
       monthlyUsd: potentialSavings,
       yearlyUsd: potentialSavings * 12,
@@ -34,7 +34,7 @@ export function ROICalculator() {
       <CardHeader>
         <CardTitle className="font-headline text-3xl text-center">Estimate Your Cloud Storage Savings</CardTitle>
         <CardDescription className="text-center text-muted-foreground text-lg">
-          Use our calculator to estimate how much you could save on block storage costs with AO+ Storage Autoscaler.
+          Use our calculator to estimate how much you could save on block storage costs with Prodory Storage Autoscaler.
         </CardDescription>
       </CardHeader>
       <CardContent>

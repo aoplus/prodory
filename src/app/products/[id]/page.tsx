@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
     };
   }
   return {
-    title: `${product.title} | AO+ Cloud Platform`,
+    title: `${product.title} | Prodory`,
     description: product.tagline,
   };
 }
@@ -72,7 +72,7 @@ export default function ProductPage({ params }: ProductPageProps) {
           <div className="mx-auto mt-16 max-w-5xl">
             <div className="text-center">
                 <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Try AO+ DocsAI
+                Try Prodory DocsAI
                 </h2>
                 <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
                 Instantly generate documentation from a description of your process.

@@ -1,6 +1,6 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -11,7 +11,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Loader2, Mail, Building, Phone } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
@@ -37,6 +36,15 @@ export default function ContactPage() {
     },
   });
 
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    setIsSubmitting(true);
+    const formData = new FormData();
+    Object.entries(values).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+    formAction(formData);
+  };
+
   useEffect(() => {
     if (state.message) {
         setIsSubmitting(false);
@@ -56,11 +64,6 @@ export default function ContactPage() {
     }
   }, [state, form, toast]);
   
-  const handleFormAction = async (formData: FormData) => {
-    setIsSubmitting(true);
-    formAction(formData);
-  }
-
   return (
     <div className="bg-muted/50">
         <div className="container mx-auto px-4 py-16 sm:py-24">
@@ -82,7 +85,7 @@ export default function ContactPage() {
                         </CardHeader>
                         <CardContent>
                             <Form {...form}>
-                                <form action={handleFormAction} className="space-y-6">
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                                     <FormField
                                         control={form.control}
@@ -155,7 +158,7 @@ export default function ContactPage() {
                         <Mail className="mt-1 h-6 w-6 text-primary"/>
                         <div>
                             <h4 className="font-semibold">Email</h4>
-                            <a href="mailto:contact@aoplus.in" className="text-muted-foreground hover:text-primary">contact@aoplus.in</a>
+                            <a href="mailto:contact@prodory.com" className="text-muted-foreground hover:text-primary">contact@prodory.com</a>
                         </div>
                     </div>
                      <div className="flex items-start gap-4">

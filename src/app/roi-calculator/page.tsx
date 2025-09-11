@@ -2,8 +2,8 @@ import { ROICalculator } from '@/components/roi-calculator';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'ROI Calculator | AO+ Cloud Platform',
-  description: 'Estimate your potential cloud storage cost savings with the AO+ Solutions ROI Calculator.',
+  title: 'ROI Calculator | Prodory',
+  description: 'Estimate your potential cloud storage cost savings with the Prodory ROI Calculator.',
 };
 
 export default function ROICalculatorPage() {

@@ -5,8 +5,8 @@ import { Check } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Solutions by Industry | AO+ Cloud Platform',
-  description: 'Learn how AO+ Solutions provides tailored cloud and AI automation for BFSI, Healthcare, SaaS, and Logistics industries.',
+  title: 'Solutions by Industry | Prodory',
+  description: 'Learn how Prodory provides tailored cloud and AI automation for BFSI, Healthcare, SaaS, and Logistics industries.',
 };
 
 export default function SolutionsPage() {
