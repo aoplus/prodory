@@ -5,7 +5,13 @@ import Image from 'next/image';
 import { format } from 'date-fns';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+interface BlogPostPageProps {
+  params: {
+    id: string;
+  };
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
   const post = blogPosts.find((p) => p.id === params.id);
   if (!post) {
     return {
@@ -18,7 +24,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
   };
 }
 
-export default function BlogPostPage({ params }: { params: { id: string } }) {
+export default function BlogPostPage({ params }: BlogPostPageProps) {
   const post = blogPosts.find((p) => p.id === params.id);
 
   if (!post) {
