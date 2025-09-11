@@ -182,21 +182,21 @@ export default function SopGenerator() {
               <TabsContent value="sop">
                 <Card className="mt-2">
                   <CardContent className="p-6">
-                    <pre className="whitespace-pre-wrap font-sans text-sm">{result.sop}</pre>
+                    <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{result.sop}</pre>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="runbook">
                 <Card className="mt-2">
                   <CardContent className="p-6">
-                     <pre className="whitespace-pre-wrap font-sans text-sm">{result.runbook}</pre>
+                     <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{result.runbook}</pre>
                   </CardContent>
                 </Card>
               </TabsContent>
               <TabsContent value="training">
                 <Card className="mt-2">
                   <CardContent className="p-6">
-                    <pre className="whitespace-pre-wrap font-sans text-sm">{result.trainingVideoScript}</pre>
+                    <pre className="whitespace-pre-wrap font-sans text-sm text-foreground">{result.trainingVideoScript}</pre>
                   </CardContent>
                 </Card>
               </TabsContent>
