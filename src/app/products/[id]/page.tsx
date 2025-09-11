@@ -6,13 +6,7 @@ import Link from 'next/link';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import SopGenerator from '@/components/sop-generator';
 
-interface ProductPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const product = products.find((p) => p.id === params.id);
   if (!product) {
     return {
@@ -25,7 +19,7 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
   };
 }
 
-export default function ProductPage({ params }: ProductPageProps) {
+export default function ProductPage({ params }: { params: { id: string } }) {
   const product = products.find((p) => p.id === params.id);
 
   if (!product) {
