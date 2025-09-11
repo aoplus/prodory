@@ -6,7 +6,7 @@ const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id)?.i
 export const products: Product[] = [
   {
     "id": "storage-autoscaler",
-    "title": "AO+ Storage Autoscaler",
+    "title": "Prodory Storage Autoscaler",
     "tagline": "Auto-resize block storage across AWS/Azure/GCP with zero app changes",
     "shortDescription": "Auto expand/shrink block volumes, reduce storage spend, assessment tool.",
     "longDescription": "Seamlessly manage your block storage costs across major cloud platforms without any changes to your applications. Our Storage Autoscaler automatically expands and shrinks block volumes based on real-time utilization, eliminating over-provisioning. The solution includes a powerful assessment tool to estimate your potential savings and provides a clear path from a managed pilot to a fully automated SaaS subscription, ensuring you only pay for what you use.",
@@ -20,7 +20,7 @@ export const products: Product[] = [
   },
   {
     "id": "data-finops-agent",
-    "title": "AO+ Data FinOps Agent",
+    "title": "Prodory Data FinOps Agent",
     "tagline": "Data & AI cost observability, query & cluster tuning",
     "shortDescription": "Monitor costs by query/job/user across warehouses; recommend & enact rightsizing.",
     "longDescription": "Gain deep visibility into your data and AI platform spending with our Data FinOps Agent. It integrates with major data warehouses like Snowflake, Databricks, and Redshift to provide granular cost analysis at the query, job, and user level. The agent operates in both advisory and autonomous modes, offering recommendations for cluster rightsizing, query optimization, and cleanup of orphaned resources. This allows you to take control of your data costs and drive significant savings.",
@@ -34,7 +34,7 @@ export const products: Product[] = [
   },
   {
     "id": "ai-finops-dashboard",
-    "title": "AO+ AI FinOps Dashboard",
+    "title": "Prodory AI FinOps Dashboard",
     "tagline": "AI-powered cost visibility & optimization",
     "shortDescription": "Monitors multi-cloud spend, recommends rightsizing and reserved planning.",
     "longDescription": "Monitors AWS/GCP spend in real time; AI recommendations for rightsizing, reserved instance planning and cost-saving automation; CFO & IT reports.",
@@ -48,7 +48,7 @@ export const products: Product[] = [
   },
   {
     "id": "k8s-in-a-box",
-    "title": "AO+ Kubernetes-in-a-Box",
+    "title": "Prodory Kubernetes-in-a-Box",
     "tagline": "Secure production-ready Kubernetes / OpenShift installs",
     "shortDescription": "One-stop Kubernetes/OpenShift deployment with CI/CD and monitoring.",
     "longDescription": "Deploys secure production Kubernetes/OpenShift clusters with CI/CD, monitoring stack and AI anomaly detection. AWS, GCP or on-prem RHEL supported.",
@@ -62,7 +62,7 @@ export const products: Product[] = [
   },
   {
     "id": "cloud-sentinel",
-    "title": "AO+ Cloud Sentinel",
+    "title": "Prodory Cloud Sentinel",
     "tagline": "Security, observability & compliance",
     "shortDescription": "Centralized monitoring with AI-driven anomaly detection.",
     "longDescription": "Prometheus/Grafana/OpenTelemetry stack + AI for anomaly detection in logs/metrics and compliance reporting (ISO, PCI-DSS, RBI).",
@@ -76,7 +76,7 @@ export const products: Product[] = [
   },
   {
     "id": "vmware-to-openshift",
-    "title": "AO+ Virtualization Migration Assistant",
+    "title": "Prodory Virtualization Migration Assistant",
     "tagline": "VMware → OpenShift migration automation",
     "shortDescription": "Automates migrations from VMware to OpenShift.",
     "longDescription": "Discovery, dependency mapping, containerization playbooks and validated cutover runbooks to migrate VMware workloads to OpenShift (on-prem/cloud).",
@@ -90,7 +90,7 @@ export const products: Product[] = [
   },
   {
     "id": "redhat-automation-suite",
-    "title": "AO+ Red Hat Automation Suite",
+    "title": "Prodory Red Hat Automation Suite",
     "tagline": "Ansible-driven OS lifecycle & reliability",
     "shortDescription": "RHEL lifecycle automation, patching, and HA clusters.",
     "longDescription": "Ansible playbooks for OS lifecycle, RHEL HA cluster setups, and application consolidation with automation best-practices.",
@@ -104,7 +104,7 @@ export const products: Product[] = [
   },
   {
     "id": "ai-infracopilot",
-    "title": "AO+ AI InfraCopilot",
+    "title": "Prodory AI InfraCopilot",
     "tagline": "ChatGPT for infrastructure (future SaaS)",
     "shortDescription": "Natural-language -> Terraform/Ansible generation, security & cost validation.",
     "longDescription": "User-friendly infra copilot that converts natural language into IaC, validates for security and cost, and suggests optimized deployments.",
@@ -118,7 +118,7 @@ export const products: Product[] = [
   },
   {
     "id": "cloudfinops",
-    "title": "AO+ CloudFinOps",
+    "title": "Prodory CloudFinOps",
     "tagline": "AI-powered cost visibility & optimization",
     "description": "Multi-cloud + SaaS cost visibility, anomaly detection and rightsizing recommendations. Freemium → Paid plans.",
     "features": [
@@ -139,7 +139,7 @@ export const products: Product[] = [
   },
   {
     "id": "docsai",
-    "title": "AO+ DocsAI",
+    "title": "Prodory DocsAI",
     "tagline": "Automated SOP & onboarding generator",
     "description": "Generate SOPs, runbooks, and training videos from workflows and recordings.",
     "features": [
@@ -160,7 +160,7 @@ export const products: Product[] = [
   },
   {
     "id": "agents",
-    "title": "AO+ Agents",
+    "title": "Prodory Agents",
     "tagline": "Industry copilots for BFSI, DevOps, Logistics",
     "description": "AI agents for invoice reconciliation, infra scaling, compliance checks, logistics scheduling.",
     "features": [
@@ -181,7 +181,7 @@ export const products: Product[] = [
   },
   {
     "id": "testgen",
-    "title": "AO+ TestGen",
+    "title": "Prodory TestGen",
     "tagline": "AI-driven code test generation",
     "description": "Automate unit & integration test generation for Java, Python, Node apps.",
     "features": [
@@ -202,7 +202,7 @@ export const products: Product[] = [
   },
   {
     "id": "aihub",
-    "title": "AO+ AI Hub",
+    "title": "Prodory AI Hub",
     "tagline": "India-first LLM & GenAI marketplace",
     "description": "Localized LLM marketplace and routing layer for cost, latency and compliance.",
     "features": [
@@ -225,33 +225,33 @@ export const products: Product[] = [
 
 export const bundles: Bundle[] = [
     {
-      "id": "ao-foundation",
-      "title": "AO+ Foundation",
+      "id": "prodory-foundation",
+      "title": "Prodory Foundation",
       "description": "AI FinOps + Cloud Migration Assessment",
       "products": ["ai-finops-dashboard","vmware-to-openshift"]
     },
     {
-      "id": "ao-accelerator",
-      "title": "AO+ Accelerator",
+      "id": "prodory-accelerator",
+      "title": "Prodory Accelerator",
       "description": "Kubernetes-in-a-Box + Cloud Sentinel + Storage Autoscaler",
       "products": ["k8s-in-a-box","cloud-sentinel", "storage-autoscaler"]
     },
     {
-      "id": "ao-enterprise",
-      "title": "AO+ Enterprise",
+      "id": "prodory-enterprise",
+      "title": "Prodory Enterprise",
       "description": "VMware Migration + OpenShift + Automation Suite",
       "products": ["vmware-to-openshift","k8s-in-a-box","redhat-automation-suite"]
     },
     {
-        "id": "ao-observability",
-        "title": "AO+ Observability Bundle",
+        "id": "prodory-observability",
+        "title": "Prodory Observability Bundle",
         "description": "A complete suite for monitoring and optimizing your cloud infrastructure.",
         "products": ["data-finops-agent","cloud-sentinel","storage-autoscaler"]
     },
     {
-        "id": "ao-complete-suite",
-        "title": "AO+ Complete Suite",
-        "description": "The full suite of AO+ products for comprehensive cloud automation and AI.",
+        "id": "prodory-complete-suite",
+        "title": "Prodory Complete Suite",
+        "description": "The full suite of Prodory products for comprehensive cloud automation and AI.",
         "products": ["storage-autoscaler", "data-finops-agent", "ai-finops-dashboard", "k8s-in-a-box", "cloud-sentinel", "vmware-to-openshift", "redhat-automation-suite", "ai-infracopilot", "cloudfinops", "docsai", "agents", "testgen", "aihub"]
     }
 ];
@@ -285,7 +285,7 @@ export const solutions: Solution[] = [
     "description": "Kubernetes acceleration, CI/CD, cost governance and automated testing.",
     "useCases": [
       "One-click Kubernetes setup",
-      "Continuous testing with AO+ TestGen",
+      "Continuous testing with Prodory TestGen",
       "Multi-cloud FinOps optimization"
     ],
     "image": getImage("solution-saas")
@@ -308,7 +308,7 @@ export const pricingPlans: PricingPlan[] = [
     "id": "starter",
     "name": "Starter",
     "price": "Free",
-    "description": "For teams exploring AO+",
+    "description": "For teams exploring Prodory",
     "features": [
       "CloudFinOps Lite",
       "DocsAI basic (2 users)",
@@ -336,7 +336,7 @@ export const pricingPlans: PricingPlan[] = [
     "price": "₹5L – ₹25L ARR",
     "description": "Custom contracts for enterprises",
     "features": [
-      "AO+ Cloud Suite (all products)",
+      "Prodory Cloud Suite (all products)",
       "Dedicated success manager",
       "Onsite support & SLA",
       "Custom AI agents"
@@ -365,7 +365,7 @@ export const blogPosts: BlogPost[] = [
   {
     "id": "post1",
     "title": "Why FinOps Matters in 2025",
-    "author": "AO+ Solutions",
+    "author": "Prodory",
     "date": "2025-09-11",
     "excerpt": "Cloud costs are growing 30% YoY. Here's how FinOps saves money for Indian enterprises.",
     "content": "Full article content goes here...",
@@ -374,7 +374,7 @@ export const blogPosts: BlogPost[] = [
   {
     "id": "post2",
     "title": "AI Agents for BFSI: The Next Big Leap",
-    "author": "AO+ Solutions",
+    "author": "Prodory",
     "date": "2025-09-15",
     "excerpt": "Banks are embracing AI copilots to automate reconciliations and compliance.",
     "content": "Full article content goes here...",
