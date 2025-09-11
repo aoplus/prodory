@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 import { ArrowRight, Cloudy, Bot, TestTube, BrainCircuit } from 'lucide-react';
 import type { Product } from '@/lib/types';
+import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 const productIcons: { [key: string]: React.ReactNode } = {
   'storage-autoscaler': <Cloudy className="h-8 w-8 text-primary" />,
@@ -26,19 +27,29 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="group flex transform flex-col overflow-hidden bg-card transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10">
+    <Card className={cn(
+        "group flex flex-col bg-card/50 transition-all duration-300 ease-in-out hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-1",
+        "border border-transparent"
+    )}>
       <CardHeader>
-        <div className="mb-4">{productIcons[product.id]}</div>
-        <CardTitle className="text-xl">{product.title}</CardTitle>
+        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
+            {productIcons[product.id]}
+        </div>
+        <CardTitle className="text-xl font-bold group-hover:text-primary">{product.title}</CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-grow flex-col">
+      <CardContent className="flex flex-grow flex-col pt-0">
         <p className="flex-grow text-muted-foreground">{product.tagline}</p>
-        <Button asChild variant="link" className="mt-4 justify-start p-0 font-semibold text-primary/80 group-hover:text-primary">
-          <Link href={`/products/${product.id}`}>
-            Learn More <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
-        </Button>
+        <div className="mt-4 flex flex-wrap gap-2">
+            {product.tags?.slice(0, 3).map(tag => (
+                <Badge key={tag} variant="secondary" className="capitalize">{tag}</Badge>
+            ))}
+        </div>
       </CardContent>
+      <div className="p-6 pt-0">
+        <Link href={`/products/${product.id}`} className="font-semibold text-sm text-primary group-hover:underline flex items-center gap-2">
+            Learn More <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </Link>
+      </div>
     </Card>
   );
 }

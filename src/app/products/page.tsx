@@ -11,13 +11,16 @@ export default function ProductsPage() {
   return (
     <div className="bg-background">
       <div className="container mx-auto px-4 py-16 sm:py-24">
-        <div className="text-center">
-          <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-            Our Product Suite
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
-            A comprehensive set of AI-first tools designed to accelerate your business, optimize costs, and streamline operations.
-          </p>
+        <div className="relative text-center">
+            <div className="absolute -inset-2.5 bg-[radial-gradient(circle_at_center,_rgba(45,125,240,0.1)_0%,_transparent_50%)]"></div>
+            <div className="relative">
+                <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+                Our Product Suite
+                </h1>
+                <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+                A comprehensive set of AI-first tools designed to accelerate your business, optimize costs, and streamline operations.
+                </p>
+            </div>
         </div>
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => (
