@@ -2,9 +2,16 @@ export interface Product {
   id: string;
   title: string;
   tagline: string;
-  description: string;
+  shortDescription: string;
+  longDescription: string;
   features: string[];
-  pricingTier: string;
+  delivery: string;
+  value: string;
+  pricingNote: string;
+  stage: "service" | "productized" | "saas";
+  industries: string[];
+  description?: string; // Keep this optional for backward compatibility if some old data is still using it
+  pricingTier?: string; // Keep this optional for backward compatibility
 }
 
 export interface Solution {
@@ -33,4 +40,11 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   image: string;
+}
+
+export interface Bundle {
+    id: string;
+    title: string;
+    description: string;
+    products: string[];
 }
