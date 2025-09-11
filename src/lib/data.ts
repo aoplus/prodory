@@ -81,6 +81,106 @@ export const products: Product[] = [
     "pricingNote": "Future SaaS pricing ₹50k–₹5L/month",
     "stage": "saas",
     "industries": ["SaaS","DevOps"]
+  },
+  {
+    "id": "cloudfinops",
+    "title": "AO+ CloudFinOps",
+    "tagline": "AI-powered cost visibility & optimization",
+    "description": "Multi-cloud + SaaS cost visibility, anomaly detection and rightsizing recommendations. Freemium → Paid plans.",
+    "features": [
+      "Connectors for AWS, GCP, Azure",
+      "AI-powered anomaly detection",
+      "Rightsizing & budget alerts",
+      "Executive dashboards"
+    ],
+    "pricingTier": "business",
+    "shortDescription": "Multi-cloud + SaaS cost visibility, anomaly detection and rightsizing recommendations.",
+    "longDescription": "Multi-cloud + SaaS cost visibility, anomaly detection and rightsizing recommendations. Freemium → Paid plans.",
+    "delivery": "SaaS",
+    "value": "Cost Savings",
+    "pricingNote": "Freemium -> Paid",
+    "stage": "saas",
+    "industries": ["SaaS", "Enterprise"]
+  },
+  {
+    "id": "docsai",
+    "title": "AO+ DocsAI",
+    "tagline": "Automated SOP & onboarding generator",
+    "description": "Generate SOPs, runbooks, and training videos from workflows and recordings.",
+    "features": [
+      "AI-generated runbooks",
+      "Video-based onboarding",
+      "Versioned SOPs",
+      "Multi-language support"
+    ],
+    "pricingTier": "starter",
+    "shortDescription": "Generate SOPs, runbooks, and training videos from workflows and recordings.",
+    "longDescription": "Generate SOPs, runbooks, and training videos from workflows and recordings.",
+    "delivery": "SaaS",
+    "value": "Time Savings",
+    "pricingNote": "Starts with free tier",
+    "stage": "saas",
+    "industries": ["SaaS", "Enterprise", "BFSI", "Healthcare"]
+  },
+  {
+    "id": "agents",
+    "title": "AO+ Agents",
+    "tagline": "Industry copilots for BFSI, DevOps, Logistics",
+    "description": "AI agents for invoice reconciliation, infra scaling, compliance checks, logistics scheduling.",
+    "features": [
+      "Finance reconciliation agent",
+      "DevOps provisioning agent",
+      "Compliance monitoring agent",
+      "Custom workflows"
+    ],
+    "pricingTier": "enterprise",
+    "shortDescription": "AI agents for invoice reconciliation, infra scaling, compliance checks, logistics scheduling.",
+    "longDescription": "AI agents for invoice reconciliation, infra scaling, compliance checks, logistics scheduling.",
+    "delivery": "SaaS / Managed Service",
+    "value": "Automation",
+    "pricingNote": "Enterprise pricing",
+    "stage": "saas",
+    "industries": ["BFSI", "DevOps", "Logistics"]
+  },
+  {
+    "id": "testgen",
+    "title": "AO+ TestGen",
+    "tagline": "AI-driven code test generation",
+    "description": "Automate unit & integration test generation for Java, Python, Node apps.",
+    "features": [
+      "Unit + integration test automation",
+      "Mutation testing suggestions",
+      "CI/CD pipeline integration",
+      "Coverage dashboards"
+    ],
+    "pricingTier": "business",
+    "shortDescription": "Automate unit & integration test generation for Java, Python, Node apps.",
+    "longDescription": "Automate unit & integration test generation for Java, Python, Node apps.",
+    "delivery": "SaaS",
+    "value": "Improved Code Quality",
+    "pricingNote": "Business tier",
+    "stage": "saas",
+    "industries": ["SaaS", "DevOps"]
+  },
+  {
+    "id": "aihub",
+    "title": "AO+ AI Hub",
+    "tagline": "India-first LLM & GenAI marketplace",
+    "description": "Localized LLM marketplace and routing layer for cost, latency and compliance.",
+    "features": [
+      "LLM request routing",
+      "Cost + latency optimization",
+      "Marketplace for plugins & agents",
+      "Indian data residency compliance"
+    ],
+    "pricingTier": "enterprise",
+    "shortDescription": "Localized LLM marketplace and routing layer for cost, latency and compliance.",
+    "longDescription": "Localized LLM marketplace and routing layer for cost, latency and compliance.",
+    "delivery": "SaaS",
+    "value": "GenAI optimization",
+    "pricingNote": "Enterprise pricing",
+    "stage": "saas",
+    "industries": ["SaaS", "Enterprise"]
   }
 ];
 
