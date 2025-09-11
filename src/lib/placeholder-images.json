@@ -1,3 +1,53 @@
+
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "solution-bfsi",
+      "description": "A modern bank interior with people working",
+      "imageUrl": "https://picsum.photos/seed/bfsi/600/400",
+      "imageHint": "finance banking"
+    },
+    {
+      "id": "solution-healthcare",
+      "description": "A doctor looking at a tablet with medical data",
+      "imageUrl": "https://picsum.photos/seed/healthcare/600/400",
+      "imageHint": "doctor medical"
+    },
+    {
+      "id": "solution-saas",
+      "description": "A team of developers collaborating in a modern office",
+      "imageUrl": "https://picsum.photos/seed/saas/600/400",
+      "imageHint": "startup team"
+    },
+    {
+      "id": "solution-logistics",
+      "description": "A large warehouse with shelves and boxes",
+      "imageUrl": "https://picsum.photos/seed/logistics/600/400",
+      "imageHint": "warehouse logistics"
+    },
+    {
+      "id": "blog-post1",
+      "description": "A graph showing upward cost trends on a screen",
+      "imageUrl": "https://picsum.photos/seed/finops-trends/600/400",
+      "imageHint": "finance chart"
+    },
+    {
+      "id": "blog-post2",
+      "description": "An abstract image of AI and data streams",
+      "imageUrl": "https://picsum.photos/seed/ai-agents/600/400",
+      "imageHint": "artificial intelligence"
+    },
+     {
+      "id": "about-us-hero",
+      "description": "Diverse team collaborating in a bright, modern office space.",
+      "imageUrl": "https://picsum.photos/seed/about-us/1200/500",
+      "imageHint": "office team"
+    },
+    {
+      "id": "founder-story",
+      "description": "Portrait of a confident founder in a professional setting.",
+      "imageUrl": "https://picsum.photos/seed/founder/400/400",
+      "imageHint": "professional portrait"
+    }
+  ]
 }
