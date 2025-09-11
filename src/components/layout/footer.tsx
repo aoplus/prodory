@@ -24,7 +24,7 @@ const footerNavs = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-background">
+    <footer className="border-t bg-muted/50">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="md:col-span-1">
@@ -53,7 +53,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-12 border-t border-white/10 pt-8 text-center text-sm text-muted-foreground">
+        <div className="mt-12 border-t pt-8 text-center text-sm text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} AO+ Solutions Pvt Ltd. All rights reserved.</p>
         </div>
       </div>

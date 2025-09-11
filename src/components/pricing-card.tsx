@@ -12,8 +12,10 @@ interface PricingCardProps {
 export function PricingCard({ plan }: PricingCardProps) {
   return (
     <Card className={cn(
-      'flex flex-col',
-      plan.isFeatured ? 'border-primary shadow-2xl relative -translate-y-4' : 'shadow-lg'
+      'flex flex-col transition-all duration-300',
+      plan.isFeatured 
+        ? 'border-primary shadow-2xl shadow-primary/10 relative lg:-translate-y-4' 
+        : 'border bg-card/30 hover:shadow-lg'
     )}>
       {plan.isFeatured && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold text-primary-foreground">
