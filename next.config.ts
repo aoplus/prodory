@@ -1,12 +1,7 @@
 import type {NextConfig} from 'next';
 
-const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
-const repo = 'prodory';
-
 const nextConfig: NextConfig = {
   output: 'export',
-  basePath: isGithubActions ? `/${repo}` : '',
-  assetPrefix: isGithubActions ? `/${repo}/` : '',
   typescript: {
     ignoreBuildErrors: true,
   },
