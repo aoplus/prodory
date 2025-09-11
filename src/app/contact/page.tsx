@@ -146,14 +146,14 @@ export default function ContactPage() {
                         <Mail className="mt-1 h-6 w-6 text-primary"/>
                         <div>
                             <h4 className="font-semibold">Email</h4>
-                            <a href="mailto:contact@aosolutions.io" className="text-muted-foreground hover:text-primary">contact@aosolutions.io</a>
+                            <a href="mailto:contact@aoplus.in" className="text-muted-foreground hover:text-primary">contact@aoplus.in</a>
                         </div>
                     </div>
                      <div className="flex items-start gap-4">
                         <Phone className="mt-1 h-6 w-6 text-primary"/>
                         <div>
                             <h4 className="font-semibold">Phone</h4>
-                            <p className="text-muted-foreground">+91 123-456-7890</p>
+                            <p className="text-muted-foreground">+91 7977875818</p>
                         </div>
                     </div>
                     <div className="flex items-start gap-4">
