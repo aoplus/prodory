@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ArrowRight } from 'lucide-radix-ui';
+import { ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import type { BlogPost } from '@/lib/types';
 import { format } from 'date-fns';
@@ -14,7 +14,7 @@ interface BlogCardProps {
 export function BlogCard({ post }: BlogCardProps) {
   return (
     <Card className="overflow-hidden transition-shadow duration-300 hover:shadow-xl">
-      <Link href="#" className="block">
+      <Link href={`/blog/${post.id}`} className="block">
         <Image
           src={post.image}
           alt={post.title}
@@ -26,7 +26,7 @@ export function BlogCard({ post }: BlogCardProps) {
       </Link>
       <CardHeader>
         <CardTitle className="font-headline text-xl">
-          <Link href="#" className="hover:text-primary">{post.title}</Link>
+          <Link href={`/blog/${post.id}`} className="hover:text-primary">{post.title}</Link>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -42,8 +42,8 @@ export function BlogCard({ post }: BlogCardProps) {
             <p className="text-xs text-muted-foreground">{format(new Date(post.date), 'MMMM d, yyyy')}</p>
           </div>
         </div>
-        <Link href="#" className="text-sm font-semibold text-primary hover:underline">
-          Read More
+        <Link href={`/blog/${post.id}`} className="group flex items-center text-sm font-semibold text-primary hover:underline">
+          Read More <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>
       </CardFooter>
     </Card>
