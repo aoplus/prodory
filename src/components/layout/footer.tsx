@@ -15,10 +15,10 @@ const footerNavs = {
     { href: '/products/aihub', label: 'AI Hub' },
   ],
   'Solutions': [
-    { href: '/solutions', label: 'BFSI' },
-    { href: '/solutions', label: 'Healthcare' },
-    { href: '/solutions', label: 'SaaS' },
-    { href: '/solutions', label: 'Logistics' },
+    { href: '/solutions#bfsi', label: 'BFSI' },
+    { href: '/solutions#healthcare', label: 'Healthcare' },
+    { href: '/solutions#saas', label: 'SaaS' },
+    { href: '/solutions#logistics', label: 'Logistics' },
   ]
 };
 
