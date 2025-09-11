@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -11,7 +11,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Loader2, Mail, Building, Phone } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
@@ -23,7 +23,8 @@ const formSchema = z.object({
 
 export default function ContactPage() {
   const initialState: FormState = { message: '', success: false };
-  const [state, formAction] = useFormState(contactFormAction, initialState);
+  const [state, formAction] = useActionState(contactFormAction, initialState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,20 +38,28 @@ export default function ContactPage() {
   });
 
   useEffect(() => {
-    if (state.success) {
-      toast({
-        title: 'Message Sent!',
-        description: 'Thank you for reaching out. We will get back to you shortly.',
-      });
-      form.reset();
-    } else if (state.message) {
-      toast({
-        title: 'Error',
-        description: state.message,
-        variant: 'destructive',
-      });
+    if (state.message) {
+        setIsSubmitting(false);
+        if (state.success) {
+            toast({
+                title: 'Message Sent!',
+                description: 'Thank you for reaching out. We will get back to you shortly.',
+            });
+            form.reset();
+        } else {
+            toast({
+                title: 'Error',
+                description: state.message,
+                variant: 'destructive',
+            });
+        }
     }
   }, [state, form, toast]);
+  
+  const handleFormAction = async (formData: FormData) => {
+    setIsSubmitting(true);
+    formAction(formData);
+  }
 
   return (
     <div className="bg-muted/50">
@@ -73,7 +82,7 @@ export default function ContactPage() {
                         </CardHeader>
                         <CardContent>
                             <Form {...form}>
-                                <form action={formAction} className="space-y-6">
+                                <form action={handleFormAction} className="space-y-6">
                                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
                                     <FormField
                                         control={form.control}
@@ -128,8 +137,8 @@ export default function ContactPage() {
                                         </FormItem>
                                     )}
                                 />
-                                <Button type="submit" disabled={form.formState.isSubmitting}>
-                                    {form.formState.isSubmitting ? (
+                                <Button type="submit" disabled={isSubmitting}>
+                                    {isSubmitting ? (
                                         <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...</>
                                     ) : (
                                         'Send Message'
