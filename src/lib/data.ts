@@ -1,9 +1,37 @@
-import type { Product, Solution, PricingPlan, BlogPost } from './types';
+import type { Product, Solution, PricingPlan, BlogPost, Bundle } from './types';
 import { PlaceHolderImages } from './placeholder-images';
 
 const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id)?.imageUrl || `https://picsum.photos/seed/${id}/600/400`;
 
 export const products: Product[] = [
+  {
+    "id": "storage-autoscaler",
+    "title": "AO+ Storage Autoscaler",
+    "tagline": "Auto-resize block storage across AWS/Azure/GCP with zero app changes",
+    "shortDescription": "Auto expand/shrink block volumes, reduce storage spend, assessment tool.",
+    "longDescription": "Seamlessly manage your block storage costs across major cloud platforms without any changes to your applications. Our Storage Autoscaler automatically expands and shrinks block volumes based on real-time utilization, eliminating over-provisioning. The solution includes a powerful assessment tool to estimate your potential savings and provides a clear path from a managed pilot to a fully automated SaaS subscription, ensuring you only pay for what you use.",
+    "features": ["Auto-expand & auto-shrink volumes", "Multi-cloud block storage support (AWS/Azure/GCP)", "Zero code & zero-downtime shrink", "Storage utilization dashboard & alerts", "Assessment & ROI estimator", "Cold tiering suggestions"],
+    "delivery": "Assessment → Pilot (managed) → SaaS subscription/automated mode",
+    "value": "Up to ~70% storage cost savings (depends on environment).",
+    "pricingNote": "Assessment ₹1–2L; Pilot ₹2–5L; SaaS pricing: fixed tier or % of savings.",
+    "stage": "productized",
+    "industries": ["SaaS","Enterprise","Logistics"],
+    "tags": ["storage","finops","autoscaling","lucidity-inspired"]
+  },
+  {
+    "id": "data-finops-agent",
+    "title": "AO+ Data FinOps Agent",
+    "tagline": "Data & AI cost observability, query & cluster tuning",
+    "shortDescription": "Monitor costs by query/job/user across warehouses; recommend & enact rightsizing.",
+    "longDescription": "Gain deep visibility into your data and AI platform spending with our Data FinOps Agent. It integrates with major data warehouses like Snowflake, Databricks, and Redshift to provide granular cost analysis at the query, job, and user level. The agent operates in both advisory and autonomous modes, offering recommendations for cluster rightsizing, query optimization, and cleanup of orphaned resources. This allows you to take control of your data costs and drive significant savings.",
+    "features": ["Query & job-level cost visibility","Cluster rightsizing recommendations","Orphaned data & snapshot cleanup suggestions","Anomaly alerts & root cause hints","Autonomous or advisory execution modes","Reports & dashboards"],
+    "delivery": "Advisory dashboards → agent-enabled optimizations",
+    "value": "Typical savings 20–50% on data platform costs (estimate).",
+    "pricingNote": "Subscription per platform + optional % of savings model. Free savings estimate available.",
+    "stage": "productized",
+    "industries": ["Enterprise","BFSI","SaaS"],
+    "tags": ["data-finops","chaosgenius-inspired","observability"]
+  },
   {
     "id": "ai-finops-dashboard",
     "title": "AO+ AI FinOps Dashboard",
@@ -15,7 +43,8 @@ export const products: Product[] = [
     "value": "Up to 30% cloud cost savings",
     "pricingNote": "Setup ₹1–2L, subscription ₹50k–₹2L/month",
     "stage": "productized",
-    "industries": ["BFSI","SaaS","Logistics"]
+    "industries": ["BFSI","SaaS","Logistics"],
+    "tags": ["finops"]
   },
   {
     "id": "k8s-in-a-box",
@@ -28,7 +57,8 @@ export const products: Product[] = [
     "value": "Deploy in weeks vs months; reduced downtime",
     "pricingNote": "One-time ₹5–10L + managed services retainer",
     "stage": "productized",
-    "industries": ["SaaS","Healthcare","Manufacturing"]
+    "industries": ["SaaS","Healthcare","Manufacturing"],
+    "tags": ["kubernetes", "devops"]
   },
   {
     "id": "cloud-sentinel",
@@ -41,7 +71,8 @@ export const products: Product[] = [
     "value": "Improves uptime & audit readiness",
     "pricingNote": "Subscription ₹75k–₹3L/month",
     "stage": "productized",
-    "industries": ["BFSI","Healthcare","SaaS"]
+    "industries": ["BFSI","Healthcare","SaaS"],
+    "tags": ["observability", "security"]
   },
   {
     "id": "vmware-to-openshift",
@@ -54,7 +85,8 @@ export const products: Product[] = [
     "value": "30–50% infra cost reduction",
     "pricingNote": "Project ₹10–25L depending on scope",
     "stage": "service",
-    "industries": ["Enterprise","BFSI"]
+    "industries": ["Enterprise","BFSI"],
+    "tags": ["migration", "vmware"]
   },
   {
     "id": "redhat-automation-suite",
@@ -67,7 +99,8 @@ export const products: Product[] = [
     "value": "Reduces manual tickets & human error",
     "pricingNote": "₹3–8L per engagement",
     "stage": "service",
-    "industries": ["Enterprise","Manufacturing"]
+    "industries": ["Enterprise","Manufacturing"],
+    "tags": ["automation", "ansible"]
   },
   {
     "id": "ai-infracopilot",
@@ -80,7 +113,8 @@ export const products: Product[] = [
     "value": "Accelerates infra onboarding & reduces misconfigurations",
     "pricingNote": "Future SaaS pricing ₹50k–₹5L/month",
     "stage": "saas",
-    "industries": ["SaaS","DevOps"]
+    "industries": ["SaaS","DevOps"],
+    "tags": ["ai", "iac"]
   },
   {
     "id": "cloudfinops",
@@ -100,7 +134,8 @@ export const products: Product[] = [
     "value": "Cost Savings",
     "pricingNote": "Freemium -> Paid",
     "stage": "saas",
-    "industries": ["SaaS", "Enterprise"]
+    "industries": ["SaaS", "Enterprise"],
+    "tags": ["finops"]
   },
   {
     "id": "docsai",
@@ -120,7 +155,8 @@ export const products: Product[] = [
     "value": "Time Savings",
     "pricingNote": "Starts with free tier",
     "stage": "saas",
-    "industries": ["SaaS", "Enterprise", "BFSI", "Healthcare"]
+    "industries": ["SaaS", "Enterprise", "BFSI", "Healthcare"],
+    "tags": ["documentation", "ai"]
   },
   {
     "id": "agents",
@@ -140,7 +176,8 @@ export const products: Product[] = [
     "value": "Automation",
     "pricingNote": "Enterprise pricing",
     "stage": "saas",
-    "industries": ["BFSI", "DevOps", "Logistics"]
+    "industries": ["BFSI", "DevOps", "Logistics"],
+    "tags": ["ai", "agents"]
   },
   {
     "id": "testgen",
@@ -160,7 +197,8 @@ export const products: Product[] = [
     "value": "Improved Code Quality",
     "pricingNote": "Business tier",
     "stage": "saas",
-    "industries": ["SaaS", "DevOps"]
+    "industries": ["SaaS", "DevOps"],
+    "tags": ["testing", "devops"]
   },
   {
     "id": "aihub",
@@ -180,11 +218,12 @@ export const products: Product[] = [
     "value": "GenAI optimization",
     "pricingNote": "Enterprise pricing",
     "stage": "saas",
-    "industries": ["SaaS", "Enterprise"]
+    "industries": ["SaaS", "Enterprise"],
+    "tags": ["ai", "llm"]
   }
 ];
 
-export const bundles = [
+export const bundles: Bundle[] = [
     {
       "id": "ao-foundation",
       "title": "AO+ Foundation",
@@ -194,14 +233,26 @@ export const bundles = [
     {
       "id": "ao-accelerator",
       "title": "AO+ Accelerator",
-      "description": "Kubernetes-in-a-Box + Cloud Sentinel",
-      "products": ["k8s-in-a-box","cloud-sentinel"]
+      "description": "Kubernetes-in-a-Box + Cloud Sentinel + Storage Autoscaler",
+      "products": ["k8s-in-a-box","cloud-sentinel", "storage-autoscaler"]
     },
     {
       "id": "ao-enterprise",
       "title": "AO+ Enterprise",
       "description": "VMware Migration + OpenShift + Automation Suite",
       "products": ["vmware-to-openshift","k8s-in-a-box","redhat-automation-suite"]
+    },
+    {
+        "id": "ao-observability",
+        "title": "AO+ Observability Bundle",
+        "description": "A complete suite for monitoring and optimizing your cloud infrastructure.",
+        "products": ["data-finops-agent","cloud-sentinel","storage-autoscaler"]
+    },
+    {
+        "id": "ao-complete-suite",
+        "title": "AO+ Complete Suite",
+        "description": "The full suite of AO+ products for comprehensive cloud automation and AI.",
+        "products": ["storage-autoscaler", "data-finops-agent", "ai-finops-dashboard", "k8s-in-a-box", "cloud-sentinel", "vmware-to-openshift", "redhat-automation-suite", "ai-infracopilot", "cloudfinops", "docsai", "agents", "testgen", "aihub"]
     }
 ];
 
@@ -291,6 +342,22 @@ export const pricingPlans: PricingPlan[] = [
       "Custom AI agents"
     ],
     "cta": "Contact Sales"
+  },
+  {
+    "id": "shared-savings",
+    "name": "Shared Savings",
+    "price": "Custom",
+    "description": "A percentage of verified savings for performance-based products.",
+    "features": [
+      "For Storage Autoscaler & Data FinOps",
+      "Pay based on performance",
+      "Typical rates: 15-30% of savings",
+      "Quarterly reconciliation"
+    ],
+    "cta": "Request Assessment",
+    "modelType": "shared-savings",
+    "exampleRates": "15-30%",
+    "notes": "Final rate depends on the environment complexity and baseline spend. A minimum fixed fee may apply."
   }
 ];
 

@@ -10,6 +10,7 @@ export interface Product {
   pricingNote: string;
   stage: "service" | "productized" | "saas";
   industries: string[];
+  tags?: string[];
   description?: string; // Keep this optional for backward compatibility if some old data is still using it
   pricingTier?: string; // Keep this optional for backward compatibility
 }
@@ -30,6 +31,9 @@ export interface PricingPlan {
   features: string[];
   cta: string;
   isFeatured?: boolean;
+  modelType?: string;
+  exampleRates?: string;
+  notes?: string;
 }
 
 export interface BlogPost {
