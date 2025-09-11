@@ -160,7 +160,7 @@ export default function ContactPage() {
                         <Building className="mt-1 h-6 w-6 text-primary"/>
                         <div>
                             <h4 className="font-semibold">Office</h4>
-                            <p className="text-muted-foreground">123 Tech Park, Bangalore, India</p>
+                            <p className="text-muted-foreground">605, Lodha Singet 01, Palava City, Mumbai, MH, India</p>
                         </div>
                     </div>
                 </div>
