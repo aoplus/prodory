@@ -10,7 +10,7 @@ const footerNavs = {
   'Products': [
     { href: '/products/cloudfinops', label: 'CloudFinOps' },
     { href: '/products/docsai', label: 'DocsAI' },
-    { href: '/products/agents', label: 'Agents' },
+    { href: '/products/agents', label: 'AI Agents' },
     { href: '/products/testgen', label: 'TestGen' },
     { href: '/products/aihub', label: 'AI Hub' },
   ],

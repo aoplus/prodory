@@ -6,7 +6,7 @@ const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id)?.i
 export const products: Product[] = [
   {
     "id": "storage-autoscaler",
-    "title": "Prodory Storage Autoscaler",
+    "title": "Storage Autoscaler",
     "tagline": "Auto-resize block storage across AWS/Azure/GCP with zero app changes",
     "shortDescription": "Auto expand/shrink block volumes, reduce storage spend, assessment tool.",
     "longDescription": "Seamlessly manage your block storage costs across major cloud platforms without any changes to your applications. Our Storage Autoscaler automatically expands and shrinks block volumes based on real-time utilization, eliminating over-provisioning. The solution includes a powerful assessment tool to estimate your potential savings and provides a clear path from a managed pilot to a fully automated SaaS subscription, ensuring you only pay for what you use.",
@@ -20,7 +20,7 @@ export const products: Product[] = [
   },
   {
     "id": "data-finops-agent",
-    "title": "Prodory Data FinOps Agent",
+    "title": "Data FinOps Agent",
     "tagline": "Data & AI cost observability, query & cluster tuning",
     "shortDescription": "Monitor costs by query/job/user across warehouses; recommend & enact rightsizing.",
     "longDescription": "Gain deep visibility into your data and AI platform spending with our Data FinOps Agent. It integrates with major data warehouses like Snowflake, Databricks, and Redshift to provide granular cost analysis at the query, job, and user level. The agent operates in both advisory and autonomous modes, offering recommendations for cluster rightsizing, query optimization, and cleanup of orphaned resources. This allows you to take control of your data costs and drive significant savings.",
@@ -34,7 +34,7 @@ export const products: Product[] = [
   },
   {
     "id": "ai-finops-dashboard",
-    "title": "Prodory AI FinOps Dashboard",
+    "title": "AI FinOps Dashboard",
     "tagline": "AI-powered cost visibility & optimization",
     "shortDescription": "Monitors multi-cloud spend, recommends rightsizing and reserved planning.",
     "longDescription": "Monitors AWS/GCP spend in real time; AI recommendations for rightsizing, reserved instance planning and cost-saving automation; CFO & IT reports.",
@@ -48,7 +48,7 @@ export const products: Product[] = [
   },
   {
     "id": "k8s-in-a-box",
-    "title": "Prodory Kubernetes-in-a-Box",
+    "title": "Kubernetes-in-a-Box",
     "tagline": "Secure production-ready Kubernetes / OpenShift installs",
     "shortDescription": "One-stop Kubernetes/OpenShift deployment with CI/CD and monitoring.",
     "longDescription": "Deploys secure production Kubernetes/OpenShift clusters with CI/CD, monitoring stack and AI anomaly detection. AWS, GCP or on-prem RHEL supported.",
@@ -62,7 +62,7 @@ export const products: Product[] = [
   },
   {
     "id": "cloud-sentinel",
-    "title": "Prodory Cloud Sentinel",
+    "title": "Cloud Sentinel",
     "tagline": "Security, observability & compliance",
     "shortDescription": "Centralized monitoring with AI-driven anomaly detection.",
     "longDescription": "Prometheus/Grafana/OpenTelemetry stack + AI for anomaly detection in logs/metrics and compliance reporting (ISO, PCI-DSS, RBI).",
@@ -76,7 +76,7 @@ export const products: Product[] = [
   },
   {
     "id": "vmware-to-openshift",
-    "title": "Prodory Virtualization Migration Assistant",
+    "title": "Virtualization Migration Assistant",
     "tagline": "VMware → OpenShift migration automation",
     "shortDescription": "Automates migrations from VMware to OpenShift.",
     "longDescription": "Discovery, dependency mapping, containerization playbooks and validated cutover runbooks to migrate VMware workloads to OpenShift (on-prem/cloud).",
@@ -90,7 +90,7 @@ export const products: Product[] = [
   },
   {
     "id": "redhat-automation-suite",
-    "title": "Prodory Red Hat Automation Suite",
+    "title": "Red Hat Automation Suite",
     "tagline": "Ansible-driven OS lifecycle & reliability",
     "shortDescription": "RHEL lifecycle automation, patching, and HA clusters.",
     "longDescription": "Ansible playbooks for OS lifecycle, RHEL HA cluster setups, and application consolidation with automation best-practices.",
@@ -104,7 +104,7 @@ export const products: Product[] = [
   },
   {
     "id": "ai-infracopilot",
-    "title": "Prodory AI InfraCopilot",
+    "title": "AI InfraCopilot",
     "tagline": "ChatGPT for infrastructure (future SaaS)",
     "shortDescription": "Natural-language -> Terraform/Ansible generation, security & cost validation.",
     "longDescription": "User-friendly infra copilot that converts natural language into IaC, validates for security and cost, and suggests optimized deployments.",
@@ -118,7 +118,7 @@ export const products: Product[] = [
   },
   {
     "id": "cloudfinops",
-    "title": "Prodory CloudFinOps",
+    "title": "CloudFinOps",
     "tagline": "AI-powered cost visibility & optimization",
     "description": "Multi-cloud + SaaS cost visibility, anomaly detection and rightsizing recommendations. Freemium → Paid plans.",
     "features": [
@@ -139,7 +139,7 @@ export const products: Product[] = [
   },
   {
     "id": "docsai",
-    "title": "Prodory DocsAI",
+    "title": "DocsAI",
     "tagline": "Automated SOP & onboarding generator",
     "description": "Generate SOPs, runbooks, and training videos from workflows and recordings.",
     "features": [
@@ -160,7 +160,7 @@ export const products: Product[] = [
   },
   {
     "id": "agents",
-    "title": "Prodory Agents",
+    "title": "AI Agents",
     "tagline": "Industry copilots for BFSI, DevOps, Logistics",
     "description": "AI agents for invoice reconciliation, infra scaling, compliance checks, logistics scheduling.",
     "features": [
@@ -181,7 +181,7 @@ export const products: Product[] = [
   },
   {
     "id": "testgen",
-    "title": "Prodory TestGen",
+    "title": "TestGen",
     "tagline": "AI-driven code test generation",
     "description": "Automate unit & integration test generation for Java, Python, Node apps.",
     "features": [
@@ -202,7 +202,7 @@ export const products: Product[] = [
   },
   {
     "id": "aihub",
-    "title": "Prodory AI Hub",
+    "title": "AI Hub",
     "tagline": "India-first LLM & GenAI marketplace",
     "description": "Localized LLM marketplace and routing layer for cost, latency and compliance.",
     "features": [

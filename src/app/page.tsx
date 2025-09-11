@@ -31,6 +31,12 @@ const productIcons: { [key: string]: React.ReactNode } = {
   aihub: <BrainCircuit className="h-6 w-6 text-primary" />,
   'storage-autoscaler': <Cloudy className="h-6 w-6 text-primary" />,
   'data-finops-agent': <BrainCircuit className="h-6 w-6 text-primary" />,
+  'ai-finops-dashboard': <Cloudy className="h-6 w-6 text-primary" />,
+  'k8s-in-a-box': <Cloudy className="h-6 w-6 text-primary" />,
+  'cloud-sentinel': <BrainCircuit className="h-6 w-6 text-primary" />,
+  'vmware-to-openshift': <Cloudy className="h-6 w-6 text-primary" />,
+  'redhat-automation-suite': <Bot className="h-6 w-6 text-primary" />,
+  'ai-infracopilot': <BrainCircuit className="h-6 w-6 text-primary" />,
 };
 
 const partners = [
