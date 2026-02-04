@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, CloudLightning } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
@@ -21,34 +21,39 @@ export default function Header() {
   const [isSheetOpen, setSheetOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 font-bold">
-          <CloudLightning className="h-6 w-6 text-primary" />
-          <span className="text-lg font-semibold">Prodory</span>
+          <span className="text-2xl font-bold text-primary">Prodory</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                'text-sm font-medium transition-colors hover:text-primary',
-                pathname.startsWith(link.href) ? 'text-primary' : 'text-muted-foreground'
+                'text-sm font-medium text-secondary transition-colors hover:text-primary',
+                pathname.startsWith(link.href) ? 'text-primary' : 'text-slate-600'
               )}
             >
               {link.label}
             </Link>
           ))}
+           <Link
+              href='/contact'
+              className='text-sm font-medium text-slate-600 transition-colors hover:text-primary'
+            >
+              Contact Sales
+            </Link>
         </nav>
 
         <div className="hidden items-center gap-4 md:flex">
           <Button variant="ghost" asChild>
-            <Link href="/contact">Contact Sales</Link>
+            <Link href="#">Login</Link>
           </Button>
-          <Button asChild>
-            <Link href="/contact">Book Assessment</Link>
+          <Button asChild variant="accent">
+            <Link href="/contact">Book Free Assessment</Link>
           </Button>
         </div>
 
@@ -62,11 +67,10 @@ export default function Header() {
             <SheetContent side="right">
               <div className="flex flex-col gap-6 p-4">
                 <Link href="/" className="flex items-center gap-2 font-bold" onClick={() => setSheetOpen(false)}>
-                  <CloudLightning className="h-6 w-6 text-primary" />
-                  <span className="text-lg font-semibold">Prodory</span>
+                  <span className="text-xl font-bold text-primary">Prodory</span>
                 </Link>
                 <div className="flex flex-col gap-4">
-                  {navLinks.map((link) => (
+                  {[...navLinks, { href: '/contact', label: 'Contact Sales' }].map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
@@ -79,16 +83,16 @@ export default function Header() {
                       {link.label}
                     </Link>
                   ))}
-                  <Link
-                      href="/contact"
+                   <Link
+                      href="#"
                       onClick={() => setSheetOpen(false)}
                       className="text-lg font-medium text-foreground transition-colors hover:text-primary"
                     >
-                      Contact
+                      Login
                     </Link>
                 </div>
-                <Button asChild className="mt-4">
-                  <Link href="/contact" onClick={() => setSheetOpen(false)}>Book Assessment</Link>
+                <Button asChild className="mt-4" variant="accent">
+                  <Link href="/contact" onClick={() => setSheetOpen(false)}>Book Free Assessment</Link>
                 </Button>
               </div>
             </SheetContent>
