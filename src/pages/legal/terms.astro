@@ -2,16 +2,42 @@
 import Base from '../../layouts/Base.astro';
 import { SITE } from '../../data/site';
 ---
-<Base title="Terms of Use | Prodory" description="Terms that apply to use of the Prodory website and the enquiry process, operated by AO Plus Solutions Pvt Ltd." path="/legal/terms/" noindex>
-  <section class="mx-auto max-w-[900px] px-4 py-16">
-    <p class="rounded border border-[#FCD34D] bg-[#FFFBEB] p-4 text-sm text-[#92400E]"><strong>Draft for counsel review.</strong> Not in force until reviewed and approved.</p>
-    <h1 class="mt-8 text-4xl font-bold tracking-tight">Terms of use</h1>
-    <ul class="mt-8 grid list-disc gap-3 pl-5 text-[#4B5563]">
-      <li>The information on this website is general and does not constitute legal, financial or compliance advice.</li>
-      <li>Service terms, pricing and acceptance criteria are set out in a separate written agreement or estimate.</li>
-      <li>Content is owned by {SITE.parent} unless stated otherwise. You may quote short extracts with attribution.</li>
-      <li>We aim to keep the site accurate. We may change content without notice.</li>
-      <li>Governing law and jurisdiction: [to be set by counsel].</li>
-    </ul>
-  </section>
+<Base title="Terms of Use | Prodory" description="Terms of use for the Prodory website and enquiry form, operated by AO Plus Solutions Pvt Ltd in Dombivli, Maharashtra." path="/legal/terms/">
+  <article class="wrap section !py-16 max-w-3xl">
+    <p class="eyebrow">Legal</p>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight text-slate-950">Terms of use</h1>
+    <p class="mt-4 text-sm muted">Last updated: 24 November 2026</p>
+    <p class="mt-6 leading-relaxed text-slate-700">These terms apply to your use of the Prodory website at prodory.com. The website is operated by {SITE.parent}.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">General information</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">The information on this website describes our services in general terms. It is not legal, financial, tax or compliance advice. Read it as a description of what we do, not as a promise of a specific outcome in your environment.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Enquiries and engagements</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">Sending an enquiry does not create a contract. Scope, pricing, timelines and acceptance criteria are set out in a separate written agreement or estimate after discovery. Architecture reviews and diagnostics are offered on the terms agreed in writing for each engagement.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Technologies and trademarks</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">Technology names on this website, including Kubernetes, Red Hat OpenShift, KubeVirt, Amazon EKS, Azure AKS, Google GKE, Terraform, OpenTofu, Ansible, Argo CD, Cilium and Karpenter, belong to their respective owners. Naming a technology does not mean we are a partner, reseller or certified provider of its owner unless we say so in writing.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Content and intellectual property</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">The content on this website is owned by {SITE.parent} unless stated otherwise. You may quote short extracts with attribution to Prodory. Please do not copy the site or its design for commercial use.</p>
+    <p class="mt-3 leading-relaxed text-slate-700">Infrastructure code and documentation we deliver to a client are owned by that client, as set out in the client's written agreement.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Acceptable use</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">Do not attempt to disrupt the website, test its security without permission, submit false enquiries, or submit someone else's personal data without their agreement.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Accuracy and changes</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">We aim to keep the site accurate and up to date, but we do not guarantee that it is complete or error-free. We may change content or these terms without notice. The date at the top shows when these terms were last changed.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Limitation of liability</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">To the extent permitted by law, {SITE.parent} is not liable for loss arising from your use of this website or reliance on its general information. Liability for any engagement is governed by the written agreement for that engagement.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Privacy</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">How we handle personal data is described in the <a class="underline" href="/legal/privacy/">privacy notice</a>. Complaints are handled under the <a class="underline" href="/legal/grievance/">grievance redressal</a> process.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Governing law</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">These terms are governed by the laws of India. The courts of Maharashtra have jurisdiction over any dispute about this website, subject to any written agreement for a specific engagement.</p>
+
+    <h2 class="mt-12 text-2xl font-semibold">Contact</h2>
+    <p class="mt-3 leading-relaxed text-slate-700">{SITE.parent}, {SITE.head.line1}, {SITE.head.line2}, {SITE.head.line3}. Email: support@aoplus.in. Phone: {SITE.phone}.</p>
+  </article>
 </Base>
