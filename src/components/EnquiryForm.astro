@@ -19,50 +19,50 @@ const options = [
 const page = Astro.url.pathname;
 ---
 <form id={id} class="grid gap-5" method="post" action={SITE.enquiryPath}>
-  <div class="hp" aria-hidden="true">
-    <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off" aria-label="Leave this field empty" /></label>
+  <div class="hp" hidden>
+    <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off" /></label>
   </div>
   <input type="hidden" name="page" value={page} />
 
   <div class="grid gap-5 sm:grid-cols-2">
     <div class="grid gap-1">
-      <label for={`${id}-name`} class="text-sm font-semibold">Full name <span class="font-normal text-[#4B5563]">(required)</span></label>
-      <input id={`${id}-name`} name="name" required minlength={2} autocomplete="name" class="rounded border border-[#D1D5DB] px-3 py-2.5" />
+      <label for={`${id}-name`} class="label">Full name <span class="font-normal muted">(required)</span></label>
+      <input id={`${id}-name`} name="name" required minlength={2} autocomplete="name" class="field" />
     </div>
     <div class="grid gap-1">
-      <label for={`${id}-email`} class="text-sm font-semibold">Work email <span class="font-normal text-[#4B5563]">(required)</span></label>
-      <input id={`${id}-email`} name="email" type="email" required autocomplete="email" aria-describedby={`${id}-email-hint`} class="rounded border border-[#D1D5DB] px-3 py-2.5" />
-      <span id={`${id}-email-hint`} class="text-xs text-[#4B5563]">We use this to reply to your enquiry.</span>
+      <label for={`${id}-email`} class="label">Work email <span class="font-normal muted">(required)</span></label>
+      <input id={`${id}-email`} name="email" type="email" required autocomplete="email" aria-describedby={`${id}-email-hint`} class="field" />
+      <span id={`${id}-email-hint`} class="text-xs muted">We use this to reply to your enquiry.</span>
     </div>
     <div class="grid gap-1">
-      <label for={`${id}-company`} class="text-sm font-semibold">Company</label>
-      <input id={`${id}-company`} name="company" autocomplete="organization" class="rounded border border-[#D1D5DB] px-3 py-2.5" />
+      <label for={`${id}-company`} class="label">Company</label>
+      <input id={`${id}-company`} name="company" autocomplete="organization" class="field" />
     </div>
     <div class="grid gap-1">
-      <label for={`${id}-phone`} class="text-sm font-semibold">Phone <span class="font-normal text-[#4B5563]">(optional)</span></label>
-      <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" class="rounded border border-[#D1D5DB] px-3 py-2.5" />
+      <label for={`${id}-phone`} class="label">Phone <span class="font-normal muted">(optional)</span></label>
+      <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" class="field" />
     </div>
   </div>
 
   <div class="grid gap-1">
-    <label for={`${id}-category`} class="text-sm font-semibold">Area of interest</label>
-    <select id={`${id}-category`} name="category" class="rounded border border-[#D1D5DB] bg-white px-3 py-2.5">
+    <label for={`${id}-category`} class="label">Area of interest</label>
+    <select id={`${id}-category`} name="category" class="field">
       {options.map(([value, text]) => <option value={value} selected={value === defaultCategory}>{text}</option>)}
     </select>
   </div>
 
   <div class="grid gap-1">
-    <label for={`${id}-req`} class="text-sm font-semibold">What do you need to solve? <span class="font-normal text-[#4B5563]">(required)</span></label>
-    <textarea id={`${id}-req`} name="requirement" rows={5} required minlength={10} aria-describedby={`${id}-req-hint`} class="rounded border border-[#D1D5DB] px-3 py-2.5"></textarea>
-    <span id={`${id}-req-hint`} class="text-xs text-[#4B5563]">For example: 40 VMs on vSphere, renewal in March, three production clusters.</span>
+    <label for={`${id}-req`} class="label">What do you need to solve? <span class="font-normal muted">(required)</span></label>
+    <textarea id={`${id}-req`} name="requirement" rows={5} required minlength={10} aria-describedby={`${id}-req-hint`} class="field"></textarea>
+    <span id={`${id}-req-hint`} class="text-xs muted">For example: 40 VMs on vSphere, renewal in March, three production clusters.</span>
   </div>
 
-  <div class="flex gap-3 text-sm">
-    <input id={`${id}-consent`} type="checkbox" name="consent_contact" value="on" required class="mt-1 h-5 w-5 shrink-0" />
-    <label for={`${id}-consent`}>I agree that Prodory (AO Plus Solutions Pvt Ltd) may contact me about this enquiry. <span class="text-[#4B5563]">(required)</span></label>
+  <div class="flex gap-3 rounded-xl border border-slate-200/80 bg-slate-50 p-4 text-sm">
+    <input id={`${id}-consent`} type="checkbox" name="consent_contact" value="on" required class="mt-1 h-4 w-4 shrink-0 accent-blue-600 rounded" />
+    <label for={`${id}-consent`}>I agree that Prodory (AO Plus Solutions Pvt Ltd) may contact me about this enquiry. <span class="muted">(required)</span></label>
   </div>
-  <div class="flex gap-3 text-sm">
-    <input id={`${id}-marketing`} type="checkbox" name="consent_marketing" value="on" class="mt-1 h-5 w-5 shrink-0" />
+  <div class="flex gap-3 rounded-xl border border-slate-200/80 bg-slate-50 p-4 text-sm">
+    <input id={`${id}-marketing`} type="checkbox" name="consent_marketing" value="on" class="mt-1 h-4 w-4 shrink-0 accent-blue-600 rounded" />
     <label for={`${id}-marketing`}>Optional: send me occasional cloud-native architecture guides and infrastructure updates. I can unsubscribe at any time.</label>
   </div>
 
@@ -74,9 +74,9 @@ const page = Astro.url.pathname;
   )}
 
   <div>
-    <button type="submit" class="min-h-11 rounded bg-[#1D4ED8] px-6 py-3 font-semibold text-white hover:bg-[#1E40AF]">{submit}</button>
+    <button type="submit" class="btn btn-primary w-full sm:w-auto px-7 py-3">{submit}</button>
   </div>
-  <p class="text-xs text-[#4B5563]">
-    Your details are used to respond to this enquiry. Read the <a class="underline" href="/legal/privacy/">privacy notice</a>. We reply within one working day.
+  <p class="text-xs muted">
+    Your details are used to respond to this enquiry. Read the <a class="font-semibold underline" href="/legal/privacy/">privacy notice</a>. We reply within one working day.
   </p>
 </form>

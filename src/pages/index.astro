@@ -16,6 +16,13 @@ const faqs = [
 const jsonLd = [
   { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
 ];
+const icons = [
+  '<path d="M4 4h16v6H4zM4 14h16v6H4zM8 7h.01M8 17h.01"/>',
+  '<path d="M4 7h11l-3-3M20 17H9l3 3"/>',
+  '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',
+  '<path d="M6 3v12M6 15a3 3 0 1 0 0 0M18 6a3 3 0 1 0 0 0M18 9c0 6-12 3-12 6"/>',
+  '<path d="M3 17l6-6 4 4 8-8M14 7h7v7"/>',
+];
 ---
 <Base
   title="Kubernetes & Platform Engineering | Prodory"
@@ -23,35 +30,64 @@ const jsonLd = [
   path="/"
   jsonLd={jsonLd}
 >
-  <section class="border-b border-[#E5E7EB]">
-    <div class="mx-auto grid max-w-[1240px] gap-10 px-4 py-16 lg:grid-cols-[1.2fr_1fr] lg:py-24">
-      <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#1D4ED8]">Cloud-native infrastructure · Kubernetes · Platform engineering</p>
-        <h1 class="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">Production platforms your team can run, in code you own.</h1>
-        <p class="mt-5 max-w-2xl text-lg text-[#4B5563]">Prodory designs, builds and hands over Kubernetes platforms, VMware exits, sovereign private cloud and infrastructure automation. Every component is code in your repositories, with a handover your team can run without us.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/architecture-review/" class="inline-flex min-h-11 items-center rounded bg-[#1D4ED8] px-5 font-semibold text-white no-underline hover:bg-[#1E40AF]">Book a 30-min architecture review</a>
-          <a href="/services/" class="inline-flex min-h-11 items-center rounded border border-[#D1D5DB] px-5 font-semibold text-[#111827] no-underline hover:bg-[#F8F9FA]">Explore services</a>
+  <section class="relative overflow-hidden border-b border-slate-200/80 bg-white">
+    <div class="dot-grid pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black_40%,transparent_80%)]" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-blue-500/5 blur-3xl" aria-hidden="true"></div>
+    <div class="wrap relative grid items-center gap-12 py-16 lg:grid-cols-12 lg:gap-10 lg:py-24">
+      <div class="lg:col-span-7">
+        <p class="pill mb-6">Cloud-native infrastructure · Kubernetes · Platform engineering</p>
+        <h1 class="text-4xl font-bold leading-[1.1] tracking-tight text-slate-950 sm:text-5xl lg:text-[3.25rem]">Production platforms your team can run, in code you own.</h1>
+        <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">Prodory designs, builds and hands over Kubernetes platforms, VMware exits, sovereign private cloud and infrastructure automation. Every component is code in your repositories, with a handover your team can run without us.</p>
+        <div class="mt-8 flex flex-wrap gap-3.5">
+          <a href="/architecture-review/" class="btn btn-primary px-6 py-3.5">Book a 30-min architecture review</a>
+          <a href="/services/" class="btn btn-secondary px-6 py-3.5">Explore services</a>
         </div>
       </div>
-      <aside class="grid content-start gap-3 rounded border border-[#E5E7EB] bg-[#F8F9FA] p-6 text-sm">
-        <p class="font-semibold">Where we start</p>
-        <ul class="grid list-none gap-3 p-0">
-          <li>1. Architecture review of your current platform, scored against a readiness checklist.</li>
-          <li>2. A written decision: stay, re-platform or exit, with the cost reasons.</li>
-          <li>3. Waves of change, each with a tested rollback path and a handover.</li>
-        </ul>
+
+      <aside class="lg:col-span-5" aria-label="Illustration of the delivery pattern">
+        <div class="overflow-hidden rounded-2xl border border-slate-800 bg-[#0B1120] text-slate-200 shadow-2xl shadow-slate-900/20">
+          <div class="flex items-center justify-between border-b border-slate-800 bg-slate-900/90 px-4 py-3">
+            <div class="flex gap-1.5" aria-hidden="true"><span class="h-2.5 w-2.5 rounded-full bg-slate-700"></span><span class="h-2.5 w-2.5 rounded-full bg-slate-700"></span><span class="h-2.5 w-2.5 rounded-full bg-slate-700"></span></div>
+            <p class="font-mono text-xs text-slate-400">prodory-platform · cluster-ops</p>
+            <p class="flex items-center gap-1.5 font-mono text-[11px] text-emerald-400"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>Ready</p>
+          </div>
+          <div class="space-y-4 p-5 font-mono text-xs">
+            <div class="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-3.5"><span class="text-slate-300">KUBERNETES · EKS / OPENSHIFT</span><span class="rounded-md bg-emerald-500/10 px-2 py-0.5 text-emerald-400">✓ GitOps synced</span></div>
+            <div class="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-3.5"><span class="text-slate-300">VIRTUALISATION · KUBEVIRT</span><span class="rounded-md bg-teal-500/10 px-2 py-0.5 text-teal-300">Wave cutover</span></div>
+            <div class="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/70 p-3.5"><span class="text-slate-300">POLICY · AS CODE</span><span class="rounded-md bg-blue-500/10 px-2 py-0.5 text-blue-300">Gate passed</span></div>
+            <pre class="overflow-x-auto rounded-xl border border-slate-800/80 bg-slate-950 p-3.5 text-[11px] leading-relaxed text-slate-300"><span class="text-slate-500"># reviewed pull request, client-owned repo</span>
+<span class="text-blue-300">terraform</span> plan -out=tfplan
+<span class="text-teal-300">argocd</span> app sync platform-prod
+<span class="text-emerald-300">kubectl</span> get nodes -o wide</pre>
+          </div>
+        </div>
+        <p class="mt-3 text-center text-xs text-slate-500">Illustration of the delivery pattern, not a live dashboard.</p>
       </aside>
     </div>
   </section>
 
-  <section class="mx-auto max-w-[1240px] px-4 py-16" aria-labelledby="services-h">
-    <h2 id="services-h" class="text-3xl font-bold tracking-tight">Five ways we help</h2>
-    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((s) => (
-        <a href={`/services/${s.id}/`} class="block rounded border border-[#E5E7EB] p-6 no-underline hover:border-[#1D4ED8]">
-          <h3 class="text-lg font-semibold text-[#111827]">{s.data.title}</h3>
-          <p class="mt-2 text-sm text-[#4B5563]">{s.data.lead}</p>
+  <section class="band-soft" aria-labelledby="start-h">
+    <div class="wrap section">
+      <h2 id="start-h" class="mt-3 text-3xl font-bold tracking-tight text-slate-950">Where we start</h2>
+      <ol class="mt-10 grid gap-6 md:grid-cols-3">
+        <li class="card p-7"><span class="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 font-mono text-xs font-bold text-white shadow-sm shadow-blue-600/25">01</span><p class="text-sm leading-relaxed text-slate-700">Architecture review of your current platform, scored against a readiness checklist.</p></li>
+        <li class="card p-7"><span class="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 font-mono text-xs font-bold text-white shadow-sm shadow-blue-600/25">02</span><p class="text-sm leading-relaxed text-slate-700">A written decision: stay, re-platform or exit, with the cost reasons.</p></li>
+        <li class="card p-7"><span class="mb-4 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 font-mono text-xs font-bold text-white shadow-sm shadow-blue-600/25">03</span><p class="text-sm leading-relaxed text-slate-700">Waves of change, each with a tested rollback path and a handover.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="services-h">
+    <h2 id="services-h" class="text-3xl font-bold tracking-tight text-slate-950">Five ways we help</h2>
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-6">
+      {services.map((s, i) => (
+        <a href={`/services/${s.id}/`} class:list={['card group flex flex-col justify-between p-7 no-underline hover:border-blue-400 hover:shadow-lg hover:shadow-blue-950/5', i < 2 ? 'lg:col-span-3' : 'lg:col-span-2']}>
+          <div>
+            <span class="icon-tile mb-5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[i]} /></span>
+            <h3 class="text-lg font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">{s.data.title}</h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-slate-600">{s.data.lead}</p>
+          </div>
+          <p class="mt-6 flex items-center justify-between border-t border-slate-100 pt-4 text-sm font-medium text-blue-600">Read more <span class="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></p>
         </a>
       ))}
     </div>
@@ -59,35 +95,58 @@ const jsonLd = [
 
   <WorksWith />
 
-  <section class="mx-auto max-w-[1240px] px-4 py-16" aria-labelledby="ind-h">
-    <h2 id="ind-h" class="text-3xl font-bold tracking-tight">Who we work with</h2>
-    <div class="mt-8 grid gap-5 md:grid-cols-3">
-      {industries.map((i) => (
-        <a href={`/industries/${i.id}/`} class="block rounded border border-[#E5E7EB] p-6 no-underline hover:border-[#1D4ED8]">
-          <h3 class="text-lg font-semibold text-[#111827]">{i.data.title}</h3>
-          <p class="mt-2 text-sm text-[#4B5563]">{i.data.lead}</p>
-        </a>
+  <section class="band-dark section" aria-labelledby="ind-h">
+    <div class="pointer-events-none absolute -top-24 left-1/2 h-64 w-[40rem] -translate-x-1/2 rounded-full bg-blue-600/10 blur-3xl" aria-hidden="true"></div>
+    <div class="wrap relative">
+      <h2 id="ind-h" class="text-3xl font-bold tracking-tight">Who we work with</h2>
+      <div class="mt-10 grid gap-6 md:grid-cols-3">
+        {industries.map((i) => (
+          <a href={`/industries/${i.id}/`} class="group flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/70 p-7 no-underline transition-all hover:border-blue-500/60 hover:bg-slate-900">
+            <div>
+              <span class="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/10 text-blue-400 ring-1 ring-blue-400/20" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 21h18M5 21V8l7-4 7 4v13"/></svg></span>
+              <h3 class="text-lg font-semibold text-white">{i.data.title}</h3>
+              <p class="mt-2.5 text-sm leading-relaxed text-slate-300">{i.data.lead}</p>
+            </div>
+            <p class="mt-6 text-sm font-medium text-blue-400">Read more <span aria-hidden="true">→</span></p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap section" aria-labelledby="faq-h">
+    <h2 id="faq-h" class="text-3xl font-bold tracking-tight text-slate-950">Frequently asked</h2>
+    <div class="mx-auto mt-10 max-w-3xl divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-white">
+      {faqs.map((f) => (
+        <details class="group">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-left text-base font-semibold text-slate-900 transition-colors hover:bg-slate-50">
+            {f.q}
+            <svg class="h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <p class="px-6 pb-5 text-sm leading-relaxed text-slate-600 sm:text-base">{f.a}</p>
+        </details>
       ))}
     </div>
   </section>
 
-  <section class="border-t border-[#E5E7EB] bg-[#F8F9FA]">
-    <div class="mx-auto max-w-[1240px] px-4 py-16">
-      <h2 class="text-3xl font-bold tracking-tight">Frequently asked</h2>
-      <dl class="mt-8 grid gap-6 md:grid-cols-3">
-        {faqs.map((f) => (
+  <section class="band-soft" aria-labelledby="enq-h">
+    <div class="wrap section">
+      <div class="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-900/5 lg:grid-cols-12">
+        <div class="flex flex-col justify-between bg-[#0B1120] p-8 text-white lg:col-span-5 lg:p-10">
           <div>
-            <dt class="font-semibold">{f.q}</dt>
-            <dd class="mt-2 text-sm text-[#4B5563]">{f.a}</dd>
+            <h2 id="enq-h" class="text-2xl font-bold tracking-tight">Start with an enquiry</h2>
+            <p class="mt-3 text-slate-300">Tell us what you need to solve. We reply within one working day.</p>
           </div>
-        ))}
-      </dl>
+          <ul class="mt-8 grid gap-3 text-sm">
+            <li><a href={`tel:${SITE.phoneTel}`} class="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/80 p-3.5 no-underline transition-colors hover:border-blue-500/50">Phone <span class="font-mono text-slate-300">{SITE.phone}</span></a></li>
+            <li><a href={SITE.whatsapp} rel="noopener" class="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/80 p-3.5 no-underline transition-colors hover:border-blue-500/50">WhatsApp <span class="font-mono text-slate-300">{SITE.phone}</span></a></li>
+            <li><a href={SITE.calendly} rel="noopener" class="flex items-center justify-between rounded-xl border border-slate-800 bg-slate-900/80 p-3.5 no-underline transition-colors hover:border-blue-500/50">Calendly <span class="font-mono text-slate-300">Book a call</span></a></li>
+          </ul>
+        </div>
+        <div class="p-8 lg:col-span-7 lg:p-10">
+          <EnquiryForm id="home-enquiry" />
+        </div>
+      </div>
     </div>
-  </section>
-
-  <section class="mx-auto max-w-[760px] px-4 py-16" aria-labelledby="enq-h">
-    <h2 id="enq-h" class="text-3xl font-bold tracking-tight">Start with an enquiry</h2>
-    <p class="mt-3 text-[#4B5563]">Tell us what you need to solve. We reply within one working day.</p>
-    <div class="mt-8"><EnquiryForm id="home-enquiry" /></div>
   </section>
 </Base>

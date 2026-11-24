@@ -4,11 +4,11 @@ import { WORKS_WITH } from '../data/site';
 interface Props { heading?: string }
 const { heading = 'Technologies we build with' } = Astro.props;
 ---
-<section aria-labelledby="works-with" class="border-y border-[#E5E7EB] bg-[#F8F9FA]">
-  <div class="mx-auto max-w-[1240px] px-4 py-8">
-    <h2 id="works-with" class="text-xs font-semibold uppercase tracking-[0.12em] text-[#4B5563]">{heading}</h2>
-    <ul class="mt-4 flex flex-wrap gap-2">
-      {WORKS_WITH.map((t) => <li class="rounded border border-[#E5E7EB] bg-white px-3 py-1.5 font-mono text-sm text-[#111827]">{t}</li>)}
+<section aria-labelledby="works-with" class="band-soft">
+  <div class="wrap section !py-12">
+    <h2 id="works-with" class="eyebrow">{heading}</h2>
+    <ul class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      {WORKS_WITH.map((t) => <li class="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-center text-sm font-medium text-slate-800 shadow-[0_1px_2px_rgba(15,23,42,0.03)] transition-colors hover:border-blue-300 hover:text-blue-700"><span class="h-1.5 w-1.5 shrink-0 rounded-full bg-blue-500" aria-hidden="true"></span>{t}</li>)}
     </ul>
   </div>
 </section>

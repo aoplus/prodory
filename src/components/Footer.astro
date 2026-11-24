@@ -2,49 +2,50 @@
 import BrandLogo from './BrandLogo.astro';
 import { SITE, NAV_SERVICES, NAV_INDUSTRIES, NAV_RESOURCES } from '../data/site';
 const year = new Date().getFullYear();
+const linkCls = 'text-sm text-slate-400 no-underline hover:text-white transition-colors';
 ---
-<footer class="border-t border-[#E5E7EB] bg-[#F8F9FA] text-[#4B5563]">
-  <div class="mx-auto grid max-w-[1240px] gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+<footer class="border-t border-slate-800 bg-[#0B1120] text-slate-400">
+  <div class="wrap grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:py-16">
     <div>
       <BrandLogo size="sm" />
       <p class="mt-3 text-sm">The enterprise cloud-native infrastructure, Kubernetes and platform engineering practice of {SITE.parent}, Mumbai, India.</p>
       <ul class="mt-4 space-y-1 text-sm">
-        <li>Email: <a class="text-[#111827]" href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
-        <li>Call: <a class="text-[#111827]" href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></li>
-        <li>WhatsApp: <a class="text-[#111827]" href={SITE.whatsapp} rel="noopener">{SITE.phone}</a></li>
-        <li>Book a call: <a class="text-[#111827]" href={SITE.calendly} rel="noopener">Calendly</a></li>
-        {SITE.social.linkedin && <li>LinkedIn: <a class="text-[#111827]" href={SITE.social.linkedin} rel="me noopener">Prodory</a></li>}
-        {SITE.social.youtube && <li>YouTube: <a class="text-[#111827]" href={SITE.social.youtube} rel="me noopener">Prodory</a></li>}
+        <li>Email: <a class="text-slate-200 no-underline hover:text-white" href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+        <li>Call: <a class="text-slate-200 no-underline hover:text-white" href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></li>
+        <li>WhatsApp: <a class="text-slate-200 no-underline hover:text-white" href={SITE.whatsapp} rel="noopener">{SITE.phone}</a></li>
+        <li>Book a call: <a class="text-slate-200 no-underline hover:text-white" href={SITE.calendly} rel="noopener">Calendly</a></li>
+        {SITE.social.linkedin && <li>LinkedIn: <a class="text-slate-200 no-underline hover:text-white" href={SITE.social.linkedin} rel="me noopener">Prodory</a></li>}
+        {SITE.social.youtube && <li>YouTube: <a class="text-slate-200 no-underline hover:text-white" href={SITE.social.youtube} rel="me noopener">Prodory</a></li>}
       </ul>
     </div>
     <div>
-      <p class="text-sm font-semibold text-[#111827]">Services</p>
-      <ul class="mt-3 space-y-2 text-sm">{NAV_SERVICES.map((i) => <li><a class="text-[#4B5563] hover:text-[#111827]" href={i.href}>{i.label}</a></li>)}</ul>
+      <p class="mono-label mb-4 !text-white">Services</p>
+      <ul class="space-y-2">{NAV_SERVICES.map((i) => <li><a class={linkCls} href={i.href}>{i.label}</a></li>)}</ul>
     </div>
     <div>
-      <p class="text-sm font-semibold text-[#111827]">Industries and proof</p>
-      <ul class="mt-3 space-y-2 text-sm">
-        {NAV_INDUSTRIES.map((i) => <li><a class="text-[#4B5563] hover:text-[#111827]" href={i.href}>{i.label}</a></li>)}
-        <li><a class="text-[#4B5563] hover:text-[#111827]" href="/case-studies/">Case studies</a></li>
-        <li><a class="text-[#4B5563] hover:text-[#111827]" href="/methodology/">Delivery methodology</a></li>
+      <p class="mono-label mb-4 !text-white">Industries and proof</p>
+      <ul class="space-y-2">
+        {NAV_INDUSTRIES.map((i) => <li><a class={linkCls} href={i.href}>{i.label}</a></li>)}
+        <li><a class={linkCls} href="/case-studies/">Case studies</a></li>
+        <li><a class={linkCls} href="/methodology/">Delivery methodology</a></li>
       </ul>
     </div>
     <div>
-      <p class="text-sm font-semibold text-[#111827]">Resources and legal</p>
-      <ul class="mt-3 space-y-2 text-sm">
-        {NAV_RESOURCES.map((i) => <li><a class="text-[#4B5563] hover:text-[#111827]" href={i.href}>{i.label}</a></li>)}
-        <li><a class="text-[#4B5563] hover:text-[#111827]" href="/about/">About Prodory</a></li>
-        <li><a class="text-[#4B5563] hover:text-[#111827]" href="/contact/">Contact</a></li>
-        <li><a class="text-[#4B5563] hover:text-[#111827]" href="/security/">Security &amp; trust</a></li>
-        <li><a class="text-[#4B5563] hover:text-[#111827]" href="/legal/privacy/">Privacy notice</a></li>
-        <li><a class="text-[#4B5563] hover:text-[#111827]" href="/legal/terms/">Terms of use</a></li>
+      <p class="mono-label mb-4 !text-white">Resources and legal</p>
+      <ul class="space-y-2">
+        {NAV_RESOURCES.map((i) => <li><a class={linkCls} href={i.href}>{i.label}</a></li>)}
+        <li><a class={linkCls} href="/about/">About Prodory</a></li>
+        <li><a class={linkCls} href="/contact/">Contact</a></li>
+        <li><a class={linkCls} href="/security/">Security &amp; trust</a></li>
+        <li><a class={linkCls} href="/legal/privacy/">Privacy notice</a></li>
+        <li><a class={linkCls} href="/legal/terms/">Terms of use</a></li>
       </ul>
     </div>
   </div>
-  <div class="border-t border-[#E5E7EB]">
-    <div class="mx-auto grid max-w-[1240px] gap-3 px-4 py-6 text-xs leading-relaxed">
-      <p><span class="font-semibold text-[#111827]">Head office:</span> {SITE.head.line1}, {SITE.head.line2}, {SITE.head.line3}</p>
-      <p><span class="font-semibold text-[#111827]">Registrations:</span> CIN {SITE.cin} · {SITE.dpiit} · UDYAM {SITE.udyam} · GSTIN {SITE.gstin} · PAN {SITE.pan} · SAC {SITE.sac} (GST {SITE.gstRate})</p>
+  <div class="border-t border-slate-800/80">
+    <div class="wrap grid gap-3 py-6 font-mono text-[11px] leading-relaxed text-slate-500">
+      <p><span class="text-slate-300">Head office:</span> {SITE.head.line1} · {SITE.head.line2} · {SITE.head.line3}</p>
+      <p><span class="text-slate-300">Registrations:</span> CIN {SITE.cin} · {SITE.dpiit} · UDYAM {SITE.udyam} · GSTIN {SITE.gstin} · PAN {SITE.pan} · SAC {SITE.sac} (GST {SITE.gstRate})</p>
       <p>© 2019–{year} {SITE.parent}. All rights reserved. Prodory is a practice of {SITE.parent}.</p>
     </div>
   </div>

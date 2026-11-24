@@ -1,29 +1,59 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site';
+const regs = [
+  ['Legal entity', SITE.parent],
+  ['CIN', SITE.cin],
+  ['Startup recognition', SITE.dpiit],
+  ['UDYAM', SITE.udyam],
+  ['GSTIN', SITE.gstin],
+  ['PAN', SITE.pan],
+  ['Services code (SAC)', `${SITE.sac}, GST ${SITE.gstRate}`],
+  ['Head office', `${SITE.head.line1}, ${SITE.head.line2}, ${SITE.head.line3}`],
+];
+const commitments = [
+  'Everything we build is code in repositories your organisation owns.',
+  'We hand over documentation and runbooks, and train the team that will run the platform.',
+  'We state what we can and cannot verify. Where a result depends on your environment, we say so before you commit.',
+];
 ---
 <Base title="About Prodory | AO Plus Solutions" description="Prodory is the cloud-native infrastructure and platform engineering practice of AO Plus Solutions Pvt Ltd, Dombivli, Maharashtra." path="/about/">
-  <section class="mx-auto max-w-[900px] px-4 py-16">
-    <h1 class="text-4xl font-bold tracking-tight">About Prodory</h1>
-    <p class="mt-5 text-lg text-[#4B5563]">Prodory is the cloud-native infrastructure, Kubernetes and platform engineering practice of {SITE.parent}, founded in {SITE.founded} and based in Dombivli, Maharashtra, India.</p>
-    <h2 class="mt-12 text-2xl font-semibold">How we work</h2>
-    <ul class="mt-4 grid list-disc gap-3 pl-5 text-[#4B5563]">
-      <li>Everything we build is code in repositories your organisation owns.</li>
-      <li>We hand over documentation and runbooks, and train the team that will run the platform.</li>
-      <li>We state what we can and cannot verify. Where a result depends on your environment, we say so before you commit.</li>
-    </ul>
-    <h2 class="mt-12 text-2xl font-semibold">Company registrations</h2>
-    <dl class="mt-4 grid gap-2 text-sm sm:grid-cols-[180px_1fr]">
-      <dt class="font-semibold">Legal entity</dt><dd>{SITE.parent}</dd>
-      <dt class="font-semibold">CIN</dt><dd class="font-mono">{SITE.cin}</dd>
-      <dt class="font-semibold">Startup recognition</dt><dd>{SITE.dpiit}</dd>
-      <dt class="font-semibold">UDYAM</dt><dd class="font-mono">{SITE.udyam}</dd>
-      <dt class="font-semibold">GSTIN</dt><dd class="font-mono">{SITE.gstin}</dd>
-      <dt class="font-semibold">PAN</dt><dd class="font-mono">{SITE.pan}</dd>
-      <dt class="font-semibold">Services code (SAC)</dt><dd>{SITE.sac}, GST {SITE.gstRate}</dd>
-      <dt class="font-semibold">Head office</dt><dd>{SITE.head.line1}, {SITE.head.line2}, {SITE.head.line3}</dd>
-    </dl>
-    <h2 class="mt-12 text-2xl font-semibold">Leadership</h2>
-    <p class="mt-4 text-[#4B5563]">Bejoyata Singh, Founder and Director, AO Plus Solutions. Prodory team profiles are being prepared and will be published once each person has approved their profile.</p>
+  <section class="border-b border-slate-200 bg-slate-50">
+    <div class="wrap py-16 sm:py-20">
+      <nav aria-label="Breadcrumb" class="text-sm muted"><a href="/" class="underline">Home</a> / About</nav>
+      <h1 class="mt-4 text-4xl font-bold tracking-tight text-slate-950">About Prodory</h1>
+      <p class="mt-5 max-w-3xl text-lg leading-relaxed text-slate-600">Prodory is the cloud-native infrastructure, Kubernetes and platform engineering practice of {SITE.parent}, founded in {SITE.founded} and based in Dombivli, Maharashtra, India.</p>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-950">How we work</h2>
+    <ol class="mt-8 grid gap-6 md:grid-cols-3">
+      {commitments.map((c, i) => (
+        <li class="card p-7"><span class="mono-label text-blue-600">{String(i + 1).padStart(2, '0')}</span><p class="mt-4 text-sm leading-relaxed text-slate-700">{c}</p></li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="band-soft">
+    <div class="wrap section">
+      <h2 class="text-2xl font-bold tracking-tight text-slate-950">Company registrations</h2>
+      <dl class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {regs.map(([label, value]) => (
+          <div class="card p-4">
+            <dt class="mono-label mb-1">{label}</dt>
+            <dd class="break-words text-sm font-semibold text-slate-900">{value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2 class="text-2xl font-bold tracking-tight text-slate-950">Leadership</h2>
+    <div class="card mt-8 flex items-start gap-4 p-6">
+      <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-600 font-semibold text-white" aria-hidden="true">BS</span>
+      <p class="text-sm leading-relaxed text-slate-600">Bejoyata Singh, Founder and Director, AO Plus Solutions. Prodory team profiles are being prepared and will be published once each person has approved their profile.</p>
+    </div>
   </section>
 </Base>
