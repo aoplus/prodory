@@ -1,0 +1,72 @@
+---
+// Enquiry form. Posts to the enquiry Worker (crm.aoplus.in lead). Works without JavaScript:
+// the Worker answers an HTML post with a redirect to /thank-you/ or back to the form with ?error=1.
+import { SITE } from '../data/site';
+
+interface Props {
+  id: string;
+  defaultCategory?: string;
+  submit?: string;
+}
+
+const { id, defaultCategory = 'general', submit = 'Send enquiry' } = Astro.props;
+
+const options = [
+  ['kubernetes', 'Kubernetes platforms'],
+  ['vmware', 'VMware to OpenShift / KubeVirt exit'],
+  ['sovereign', 'Sovereign and hybrid private cloud'],
+  ['iac', 'Infrastructure automation and GitOps'],
+  ['finops', 'Cloud and Kubernetes cost optimisation'],
+  ['gcc', 'Co-engineering pod for a GCC or team'],
+  ['general', 'General enquiry'],
+];
+const page = Astro.url.pathname;
+---
+<form id={id} class="grid gap-4" method="post" action={SITE.enquiryUrl}>
+  <div class="hp" aria-hidden="true">
+    <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+  <input type="hidden" name="page" value={page} />
+
+  <div class="grid gap-4 sm:grid-cols-2">
+    <label class="grid gap-1 text-sm font-semibold">Full name <span class="text-muted">(required)</span>
+      <input name="name" required minlength="2" autocomplete="name" class="rounded-lg border border-line px-3 py-2 font-normal" />
+    </label>
+    <label class="grid gap-1 text-sm font-semibold">Work email <span class="text-muted">(required)</span>
+      <input name="email" type="email" required autocomplete="email" class="rounded-lg border border-line px-3 py-2 font-normal" />
+    </label>
+    <label class="grid gap-1 text-sm font-semibold">Company
+      <input name="company" autocomplete="organization" class="rounded-lg border border-line px-3 py-2 font-normal" />
+    </label>
+    <label class="grid gap-1 text-sm font-semibold">Phone <span class="text-muted">(optional)</span>
+      <input name="phone" type="tel" autocomplete="tel" class="rounded-lg border border-line px-3 py-2 font-normal" />
+    </label>
+  </div>
+
+  <label class="grid gap-1 text-sm font-semibold">Area of interest
+    <select name="category" class="rounded-lg border border-line bg-paper px-3 py-2 font-normal">
+      {options.map(([value, text]) => <option value={value} selected={value === defaultCategory}>{text}</option>)}
+    </select>
+  </label>
+
+  <label class="grid gap-1 text-sm font-semibold">What do you need to solve? <span class="text-muted">(required)</span>
+    <textarea name="requirement" rows="5" required minlength="10" class="rounded-lg border border-line px-3 py-2 font-normal"
+      placeholder="For example: 40 VMs on vSphere, renewal in March, three production clusters, no Kubernetes team yet."></textarea>
+  </label>
+
+  <label class="flex gap-3 text-sm">
+    <input type="checkbox" name="consent_contact" value="on" required class="mt-1" />
+    <span>I agree that Prodory may contact me about this enquiry. <span class="text-muted">(required)</span></span>
+  </label>
+  <label class="flex gap-3 text-sm">
+    <input type="checkbox" name="consent_marketing" value="on" class="mt-1" />
+    <span>I agree to occasional technical updates from Prodory. I can unsubscribe at any time.</span>
+  </label>
+
+  <div>
+    <button type="submit" class="min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper hover:bg-brand-ink">{submit}</button>
+  </div>
+  <p class="text-xs text-muted">
+    We use these details to respond to your enquiry. See the <a href="/legal/privacy/">privacy notice</a>. We reply within one working day.
+  </p>
+</form>

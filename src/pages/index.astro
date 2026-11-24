@@ -1,0 +1,114 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, PILLARS } from '../data/site';
+import { INDUSTRIES } from '../data/industries';
+---
+<Base
+  title="Prodory | Kubernetes, VMware exit and cloud cost engineering"
+  description="Cloud-native infrastructure, Kubernetes and platform engineering for Indian enterprises and GCCs. Platforms you own."
+  path="/"
+>
+  <section class="border-b border-line">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 lg:grid-cols-[3fr_2fr] lg:items-center">
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-brand">Cloud-native infrastructure · Kubernetes · Platform engineering</p>
+        <h1 class="mt-3 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">Platforms you own, built and run by engineers who work in the terminal.</h1>
+        <p class="mt-5 max-w-2xl text-lg text-muted">
+          We design and build production Kubernetes platforms, move workloads off VMware, and cut cloud and cluster waste with code you keep.
+          Every repository, runbook and configuration is handed over to you.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href={SITE.primaryCta.href} class="min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline hover:bg-brand-ink">{SITE.primaryCta.label}</a>
+          <a href="/services/" class="min-h-11 rounded-lg border border-line px-5 py-3 font-semibold text-ink no-underline hover:bg-card">See our services</a>
+        </div>
+      </div>
+      <aside aria-label="Engagement at a glance" class="rounded-xl border border-line bg-card p-6 text-sm">
+        <p class="font-semibold">Start with a 30-minute architecture review</p>
+        <ol class="mt-4 list-decimal space-y-3 pl-5 text-muted">
+          <li>Tell us what you run and what is driving the change.</li>
+          <li>We reply within one working day with a time to talk.</li>
+          <li>You receive a written summary: current state, risks and options.</li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 class="text-2xl font-bold">Three deadlines shaping infrastructure budgets</h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-3">
+        <article class="rounded-xl border border-line bg-card p-5">
+          <h3 class="font-semibold">VMware licensing has changed</h3>
+          <p class="mt-2 text-sm text-muted">Broadcom’s per-core subscriptions and renewal penalties have made VMware renewals a board-level decision. A planned exit beats a rushed one.</p>
+        </article>
+        <article class="rounded-xl border border-line bg-card p-5">
+          <h3 class="font-semibold">Cloud bills grow faster than workloads</h3>
+          <p class="mt-2 text-sm text-muted">Idle clusters, over-provisioned nodes and unused storage are common. The fix is engineering work in the platform, not another dashboard.</p>
+        </article>
+        <article class="rounded-xl border border-line bg-card p-5">
+          <h3 class="font-semibold">DPDP obligations take full effect on 13 May 2027</h3>
+          <p class="mt-2 text-sm text-muted">Encryption, audit logs and breach reporting apply to regulated data. Infrastructure decisions made now decide how hard compliance is later.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 class="text-2xl font-bold">What we do</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {PILLARS.map((p) => (
+          <a href={`/services/${p.slug}/`} class="group rounded-xl border border-line p-5 no-underline hover:border-brand">
+            <h3 class="font-semibold text-ink group-hover:text-brand">{p.title}</h3>
+            <p class="mt-2 text-sm text-muted">{p.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-line bg-card">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 class="text-2xl font-bold">How an engagement starts</h2>
+      <div class="mt-6 grid gap-4 md:grid-cols-3">
+        <div class="rounded-xl bg-paper p-5"><h3 class="font-semibold">1. Architecture review</h3><p class="mt-2 text-sm text-muted">Week 1. A 30-minute call and a written summary of your current state, risks and options. No charge.</p></div>
+        <div class="rounded-xl bg-paper p-5"><h3 class="font-semibold">2. Pilot</h3><p class="mt-2 text-sm text-muted">Weeks 2 to 12. One workload or cluster, with read-only access to start. You see the code before you commit to more.</p></div>
+        <div class="rounded-xl bg-paper p-5"><h3 class="font-semibold">3. Rollout</h3><p class="mt-2 text-sm text-muted">From month 4. The platform moves into production in waves, and your team takes over the repositories as we go.</p></div>
+      </div>
+      <p class="mt-6 text-sm"><a href="/engagement-models/" class="font-semibold">Compare engagement models</a> · <a href="/methodology/" class="font-semibold">Read our delivery methodology</a></p>
+    </div>
+  </section>
+
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 class="text-2xl font-bold">Engineering practice</h2>
+      <p class="mt-4 max-w-3xl text-muted">
+        Our own infrastructure runs the stack we recommend: bare-metal Linux and KubeVirt virtualisation on ARM64 nodes, Cilium eBPF networking,
+        rootless Podman for container isolation, Red Hat Satellite for errata management, and Terraform-driven multi-cloud pipelines.
+      </p>
+      <p class="mt-4 text-sm"><a href="/about/" class="font-semibold">About the team and the company</a></p>
+    </div>
+  </section>
+
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 class="text-2xl font-bold">Industries we serve</h2>
+      <ul class="mt-6 grid gap-4 md:grid-cols-3">
+        {INDUSTRIES.map((i) => (
+          <li><a href={`/industries/${i.slug}/`} class="block h-full rounded-xl border border-line p-5 no-underline hover:border-brand">
+            <h3 class="font-semibold text-ink">{i.title}</h3>
+            <p class="mt-2 text-sm text-muted">{i.lead}</p>
+          </a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <h2 class="text-2xl font-bold">Not sure where to start?</h2>
+      <p class="mt-3 max-w-2xl text-muted">Most clients begin with a 30-minute architecture review. We tell you which service fits, or that you do not need us yet.</p>
+      <a href={SITE.primaryCta.href} class="mt-6 inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline hover:bg-brand-ink">{SITE.primaryCta.label}</a>
+    </div>
+  </section>
+</Base>

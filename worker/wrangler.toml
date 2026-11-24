@@ -1,0 +1,16 @@
+# Enquiry Worker for prodory.com. Secrets are NOT stored here.
+# Set them with `wrangler secret put <NAME>` (or in the dashboard), from the names listed in worker/README.md.
+name = "prodory-enquiry"
+main = "src/index.mjs"
+compatibility_date = "2026-11-01"
+
+# Failed enquiries are queued here. Create the database and table first (see worker/README.md).
+[[d1_databases]]
+binding = "DB"
+database_name = "prodory-enquiry-queue"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[vars]
+# Set to "1" to log instead of writing to CRM and Mautic. Keep "1" until the end-to-end test passes.
+CRM_DRY_RUN = "1"
+MAUTIC_DRY_RUN = "1"

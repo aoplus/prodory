@@ -1,0 +1,41 @@
+---
+import { SITE, PILLARS } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-line bg-card">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="text-sm text-muted">
+      <p class="font-semibold text-ink">Prodory</p>
+      <p class="mt-2">The enterprise cloud-native and platform engineering practice of {SITE.parent}.</p>
+      <p class="mt-2">Established {SITE.founded}, {SITE.location}.</p>
+      <p class="mt-2">{SITE.registrations.join(' · ')}</p>
+      <p class="mt-2">CIN {SITE.cin}</p>
+    </div>
+    <div class="text-sm">
+      <p class="font-semibold text-ink">Services</p>
+      <ul class="mt-2 space-y-1">
+        {PILLARS.map((p) => <li><a class="text-muted" href={`/services/${p.slug}/`}>{p.title}</a></li>)}
+      </ul>
+    </div>
+    <div class="text-sm">
+      <p class="font-semibold text-ink">Company</p>
+      <ul class="mt-2 space-y-1">
+        <li><a class="text-muted" href="/about/">About</a></li>
+        <li><a class="text-muted" href="/methodology/">Methodology</a></li>
+        <li><a class="text-muted" href="/engagement-models/">Engagement models</a></li>
+        <li><a class="text-muted" href="/case-studies/">Case studies</a></li>
+        <li><a class="text-muted" href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div class="text-sm">
+      <p class="font-semibold text-ink">Trust and legal</p>
+      <ul class="mt-2 space-y-1">
+        <li><a class="text-muted" href="/security/">Security</a></li>
+        <li><a class="text-muted" href="/legal/privacy/">Privacy notice</a></li>
+        <li><a class="text-muted" href="/legal/terms/">Terms</a></li>
+        <li><a class="text-muted" href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+      </ul>
+      <p class="mt-4 text-xs text-muted">&copy; 2019–{year} {SITE.parent}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+<Base title="Case studies | Prodory" description="Prodory case studies and production blueprints. Published only with client approval." path="/case-studies/">
+  <article class="mx-auto max-w-4xl px-4 py-14">
+    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / Case studies</nav>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight">Case studies</h1>
+    <p class="mt-4 text-lg text-muted">We publish client case studies only with the client’s written approval. Until the first ones are approved, this page shows nothing we cannot stand behind.</p>
+    <div class="mt-8 rounded-xl bg-card p-6">
+      <h2 class="text-xl font-semibold">Want to see how we would approach your environment?</h2>
+      <p class="mt-2 text-muted">A 30-minute architecture review walks through a design for your own estate, with the trade-offs written down.</p>
+      <a href="/architecture-review/" class="mt-4 inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline">{SITE.primaryCta.label}</a>
+    </div>
+  </article>
+</Base>

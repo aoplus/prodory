@@ -1,0 +1,25 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SITE } from '../../data/site';
+import { SERVICES } from '../../data/services';
+---
+<Base title="Services | Prodory" description="Kubernetes platforms, VMware to OpenShift, sovereign private cloud, infrastructure automation and cost optimisation." path="/services/">
+  <section class="mx-auto max-w-6xl px-4 py-14">
+    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / Services</nav>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight">Four services, one engineering practice</h1>
+    <p class="mt-4 max-w-3xl text-lg text-muted">Each service ends in infrastructure your team owns: repositories, runbooks and a handover. We do not sell a platform you have to rent from us.</p>
+    <ul class="mt-10 grid gap-4 md:grid-cols-2">
+      {SERVICES.map((s) => (
+        <li><a href={`/services/${s.slug}/`} class="block h-full rounded-xl border border-line p-6 no-underline hover:border-brand">
+          <h2 class="text-xl font-semibold text-ink">{s.title}</h2>
+          <p class="mt-2 text-muted">{s.lead}</p>
+        </a></li>
+      ))}
+    </ul>
+    <div class="mt-12 rounded-xl bg-card p-6">
+      <h2 class="text-xl font-semibold">Not sure which service fits?</h2>
+      <p class="mt-2 text-muted">Start with a 30-minute architecture review. We will tell you which service fits, or that you do not need us yet.</p>
+      <a href={SITE.primaryCta.href} class="mt-4 inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline">{SITE.primaryCta.label}</a>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import EnquiryForm from '../../components/EnquiryForm.astro';
+import { SERVICES } from '../../data/services';
+
+export function getStaticPaths() {
+  return SERVICES.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+
+const { service } = Astro.props;
+---
+<Base title={`${service.title} | Prodory`} description={service.lead} path={`/services/${service.slug}/`}>
+  <article class="mx-auto max-w-4xl px-4 py-14">
+    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / <a href="/services/">Services</a> / {service.title}</nav>
+    <h1 class="mt-3 text-4xl font-bold tracking-tight">{service.title}</h1>
+    <p class="mt-4 text-lg text-muted">{service.lead}</p>
+    <p class="mt-6"><a href="/architecture-review/" class="inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline">{service.cta}</a></p>
+
+    <section class="mt-12">
+      <h2 class="text-2xl font-bold">Why now</h2>
+      <ul class="mt-4 list-disc space-y-2 pl-6 text-muted">
+        {service.why.map((w) => <li>{w}</li>)}
+      </ul>
+    </section>
+
+    <section class="mt-12 grid gap-8 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-bold">What we do</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-muted">
+          {service.scope.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold">What you get</h2>
+        <ul class="mt-4 list-disc space-y-2 pl-6 text-muted">
+          {service.outcomes.map((o) => <li>{o}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-16 rounded-xl border border-line p-6">
+      <h2 class="text-2xl font-bold">Start with an enquiry</h2>
+      <p class="mt-2 text-muted">Tell us about your environment. We reply within one working day.</p>
+      <div class="mt-6">
+        <EnquiryForm id={`enquiry-${service.slug}`} defaultCategory={service.category} />
+      </div>
+    </section>
+  </article>
+</Base>
