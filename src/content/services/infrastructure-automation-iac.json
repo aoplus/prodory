@@ -1,0 +1,45 @@
+{
+  "title": "Infrastructure automation and GitOps",
+  "order": 4,
+  "lead": "Replace manual changes with reviewed code, so every production change has a history and a rollback.",
+  "capsule": "Prodory replaces manual infrastructure changes with reviewed code. We write Terraform or OpenTofu for cloud and data-centre resources, Ansible for server and operating-system lifecycle, and GitOps delivery with Argo CD or Flux. Each change passes a pull-request review and policy checks before it reaches production, and the repositories are created in your organisation.",
+  "why": [
+    "Manual changes create drift that nobody can explain during an incident.",
+    "Platform teams need a reviewed, repeatable delivery path before an internal developer platform is worth building."
+  ],
+  "scope": [
+    "Terraform and OpenTofu for cloud and data-centre resources",
+    "Ansible for server and OS lifecycle, including RHEL patching",
+    "GitOps delivery with review gates and policy checks",
+    "Migration of existing manual configuration into code"
+  ],
+  "outcomes": [
+    "Repositories in your own Git organisation",
+    "A pull-request workflow with policy gates",
+    "Module documentation and a maintenance guide"
+  ],
+  "cta": "Audit your automation maturity",
+  "enquiryCategory": "iac",
+  "diagram": {
+    "title": "Declarative change path with policy gate",
+    "caption": "Fig. 4 — Every production change passes one reviewed path, with policy and cost checks before deployment.",
+    "steps": [
+      "Git pull request",
+      "Terraform or OpenTofu plan",
+      "Policy gate (OPA or Kyverno) and cost guardrails",
+      "Reviewer approval",
+      "Automated deployment",
+      "Audit trail in Git"
+    ]
+  },
+  "faqs": [
+    {
+      "q": "Do you work in our existing Git platform?",
+      "a": "Yes. We work in GitHub, GitLab or your self-hosted Git, and the repositories sit in your organisation."
+    },
+    {
+      "q": "Can you move our manual setup into code?",
+      "a": "Yes. We document what exists, codify it in small reviewed changes, and remove manual access once the code path is proven."
+    }
+  ]
+}

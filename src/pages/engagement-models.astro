@@ -1,40 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Engagement models | Prodory" description="How Prodory engagements are structured: diagnostic, sprint, fixed build and co-engineering pod. Ownership terms included." path="/engagement-models/">
-  <article class="mx-auto max-w-5xl px-4 py-14">
-    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / Engagement models</nav>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight">Engagement models</h1>
-    <p class="mt-4 max-w-3xl text-lg text-muted">Every engagement starts with a scoped conversation. We do not publish price lists here: the scope decides the commercial terms, and we state them in writing before any work begins.</p>
-
-    <div class="mt-10 grid gap-4 md:grid-cols-2">
-      <section class="rounded-xl border border-line p-6">
-        <h2 class="text-xl font-semibold">Diagnostic</h2>
-        <p class="mt-2 text-muted">A fixed-scope review of one environment: current state, risks, options, and a written recommendation. Typically two weeks.</p>
-      </section>
-      <section class="rounded-xl border border-line p-6">
-        <h2 class="text-xl font-semibold">FinOps sprint</h2>
-        <p class="mt-2 text-muted">Find the waste, rank the savings, and deliver the highest-value changes as pull requests you review. Fixed scope, fixed duration.</p>
-      </section>
-      <section class="rounded-xl border border-line p-6">
-        <h2 class="text-xl font-semibold">Fixed build</h2>
-        <p class="mt-2 text-muted">A defined platform or migration deliverable with an agreed acceptance checklist, a handover plan and a warranty period for defects.</p>
-      </section>
-      <section class="rounded-xl border border-line p-6">
-        <h2 class="text-xl font-semibold">Co-engineering pod</h2>
-        <p class="mt-2 text-muted">Platform engineers working inside your team and your repositories, with overlapping working hours. Built for GCCs and teams that need senior capacity.</p>
-      </section>
+<Base title="Engagement Models | Prodory" description="Diagnostic, fixed-scope delivery and co-engineering pods. Choose the model that fits your team and your timeline." path="/engagement-models/">
+  <section class="mx-auto max-w-[1240px] px-4 py-16">
+    <h1 class="text-4xl font-bold tracking-tight">Engagement models</h1>
+    <p class="mt-4 max-w-2xl text-lg text-[#4B5563]">Three ways to work together. Pricing for each is set in a written estimate after discovery; this page does not publish rates.</p>
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      <div class="rounded border border-[#E5E7EB] p-6"><h2 class="text-xl font-semibold">Diagnostic</h2><p class="mt-3 text-sm text-[#4B5563]">A fixed-scope review of one platform area, with a written decision and a ranked list of changes. Typically two to three weeks.</p></div>
+      <div class="rounded border border-[#E5E7EB] p-6"><h2 class="text-xl font-semibold">Fixed-scope delivery</h2><p class="mt-3 text-sm text-[#4B5563]">A defined set of deliverables, such as a cluster build, a migration wave or an automation estate, with an agreed acceptance checklist.</p></div>
+      <div class="rounded border border-[#E5E7EB] p-6"><h2 class="text-xl font-semibold">Co-engineering pod</h2><p class="mt-3 text-sm text-[#4B5563]">Platform engineers who work inside your team, under your repositories and your security rules, with a handover plan.</p></div>
     </div>
-
-    <section class="mt-12 rounded-xl bg-card p-6">
-      <h2 class="text-xl font-semibold">Ownership terms, in every engagement</h2>
-      <ul class="mt-3 list-disc space-y-2 pl-6 text-muted">
-        <li>Repositories, infrastructure code and runbooks are created in your organisation and remain yours.</li>
-        <li>We work from read-only access until you approve each change.</li>
-        <li>Every production change is delivered through a reviewed pull request, with a rollback plan.</li>
-      </ul>
-    </section>
-
-    <p class="mt-10"><a href="/architecture-review/" class="inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline">Request a scoped estimate</a></p>
-  </article>
+  </section>
 </Base>

@@ -2,15 +2,23 @@
 import Base from '../layouts/Base.astro';
 import EnquiryForm from '../components/EnquiryForm.astro';
 import { SITE } from '../data/site';
+const error = Astro.url.searchParams.get('error') === '1';
 ---
-<Base title="Contact Prodory" description="Contact Prodory about Kubernetes, VMware exit, sovereign cloud, automation and cost engineering." path="/contact/">
-  <section class="mx-auto max-w-3xl px-4 py-14">
-    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / Contact</nav>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight">Contact us</h1>
-    <p class="mt-4 text-muted">Email <a href={`mailto:${SITE.email}`}>{SITE.email}</a>, or send an enquiry below. We reply within one working day.</p>
-    <p class="mt-2 text-sm text-muted">{SITE.parent}, {SITE.location}</p>
-    <div class="mt-10">
-      <EnquiryForm id="enquiry-contact" defaultCategory="general" />
+<Base title="Contact Prodory | Cloud & Kubernetes Enquiries" description="Contact Prodory for Kubernetes, VMware exit, sovereign cloud, infrastructure automation and cost optimisation enquiries. We reply within one working day." path="/contact/">
+  <section class="mx-auto grid max-w-[1240px] gap-12 px-4 py-16 lg:grid-cols-[1fr_1.2fr]">
+    <div>
+      <h1 class="text-4xl font-bold tracking-tight">Contact</h1>
+      <p class="mt-4 text-[#4B5563]">Send us the details of what you need to solve. We reply within one working day and suggest the next step.</p>
+      <ul class="mt-8 grid gap-3 text-sm">
+        <li>Phone: <a class="underline" href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></li>
+        <li>WhatsApp: <a class="underline" href={SITE.whatsapp} rel="noopener">{SITE.phone}</a></li>
+        <li>Book a call: <a class="underline" href={SITE.calendly} rel="noopener">calendly.com/aoplusin</a></li>
+        <li>Address: {SITE.head.line1}, {SITE.head.line2}, {SITE.head.line3}</li>
+      </ul>
+    </div>
+    <div>
+      {error && <p role="alert" class="mb-6 rounded border border-[#FCA5A5] bg-[#FEF2F2] p-4 text-sm text-[#991B1B]">Your enquiry could not be sent. Please try again, or email {SITE.email} or call {SITE.phone}.</p>}
+      <EnquiryForm id="contact-enquiry" />
     </div>
   </section>
 </Base>

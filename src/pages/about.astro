@@ -2,24 +2,28 @@
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site';
 ---
-<Base title="About Prodory | AO Plus Solutions" description="Prodory is the cloud-native and platform engineering practice of AO Plus Solutions Pvt Ltd, established 2019 in Mumbai." path="/about/">
-  <article class="mx-auto max-w-4xl px-4 py-14">
-    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / About</nav>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight">About Prodory</h1>
-    <p class="mt-4 text-lg text-muted">
-      Prodory is the enterprise cloud-native and platform engineering practice of {SITE.parent}, established in {SITE.founded} and based in {SITE.location}.
-      The company is registered with DPIIT Startup India and UDYAM (UDYAM-MH-33-0401680).
-    </p>
-
-    <section class="mt-12 grid gap-4 md:grid-cols-3">
-      <div class="rounded-xl border border-line p-5"><h2 class="font-semibold">How we work</h2><p class="mt-2 text-sm text-muted">We start from the process and the platform, not the tool. We state what we will and will not do, in writing.</p></div>
-      <div class="rounded-xl border border-line p-5"><h2 class="font-semibold">What you keep</h2><p class="mt-2 text-sm text-muted">Your repositories, runbooks and accounts. We do not hold your platform hostage.</p></div>
-      <div class="rounded-xl border border-line p-5"><h2 class="font-semibold">Open source first</h2><p class="mt-2 text-sm text-muted">Kubernetes, OpenShift, Terraform, Ansible, Cilium and Podman. Our designs carry no proprietary lock-in.</p></div>
-    </section>
-
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold">Leadership and team</h2>
-      <p class="mt-3 text-muted">Named profiles are published once each person has confirmed theirs. For introductions before then, write to <a href={`mailto:${SITE.email}`}>{SITE.email}</a> and we will connect you with the right engineer.</p>
-    </section>
-  </article>
+<Base title="About Prodory | AO Plus Solutions" description="Prodory is the cloud-native infrastructure and platform engineering practice of AO Plus Solutions Pvt Ltd, Dombivli, Maharashtra." path="/about/">
+  <section class="mx-auto max-w-[900px] px-4 py-16">
+    <h1 class="text-4xl font-bold tracking-tight">About Prodory</h1>
+    <p class="mt-5 text-lg text-[#4B5563]">Prodory is the cloud-native infrastructure, Kubernetes and platform engineering practice of {SITE.parent}, founded in {SITE.founded} and based in Dombivli, Maharashtra, India.</p>
+    <h2 class="mt-12 text-2xl font-semibold">How we work</h2>
+    <ul class="mt-4 grid list-disc gap-3 pl-5 text-[#4B5563]">
+      <li>Everything we build is code in repositories your organisation owns.</li>
+      <li>We hand over documentation and runbooks, and train the team that will run the platform.</li>
+      <li>We state what we can and cannot verify. Where a result depends on your environment, we say so before you commit.</li>
+    </ul>
+    <h2 class="mt-12 text-2xl font-semibold">Company registrations</h2>
+    <dl class="mt-4 grid gap-2 text-sm sm:grid-cols-[180px_1fr]">
+      <dt class="font-semibold">Legal entity</dt><dd>{SITE.parent}</dd>
+      <dt class="font-semibold">CIN</dt><dd class="font-mono">{SITE.cin}</dd>
+      <dt class="font-semibold">Startup recognition</dt><dd>{SITE.dpiit}</dd>
+      <dt class="font-semibold">UDYAM</dt><dd class="font-mono">{SITE.udyam}</dd>
+      <dt class="font-semibold">GSTIN</dt><dd class="font-mono">{SITE.gstin}</dd>
+      <dt class="font-semibold">PAN</dt><dd class="font-mono">{SITE.pan}</dd>
+      <dt class="font-semibold">Services code (SAC)</dt><dd>{SITE.sac}, GST {SITE.gstRate}</dd>
+      <dt class="font-semibold">Head office</dt><dd>{SITE.head.line1}, {SITE.head.line2}, {SITE.head.line3}</dd>
+    </dl>
+    <h2 class="mt-12 text-2xl font-semibold">Leadership</h2>
+    <p class="mt-4 text-[#4B5563]">Bejoyata Singh, Founder and Director, AO Plus Solutions. Prodory team profiles are being prepared and will be published once each person has approved their profile.</p>
+  </section>
 </Base>

@@ -1,0 +1,13 @@
+{
+  "title": "Banking, financial services and insurance",
+  "order": 1,
+  "lead": "Regulated infrastructure for banks, lenders, insurers and fintechs: residency, auditability and controls designed in from the start.",
+  "points": [
+    "Residency and sovereignty design for regulated workloads",
+    "Kubernetes security: admission policy, secrets management and network isolation",
+    "Logging and audit retention to meet DPDP and sector rules, with CERT-In log retention",
+    "VMware exit for core banking and reporting systems, planned in waves with rollback"
+  ],
+  "cta": "Book a regulated cloud readiness review",
+  "enquiryCategory": "sovereign"
+}

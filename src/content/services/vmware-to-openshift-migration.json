@@ -1,0 +1,45 @@
+{
+  "title": "VMware to OpenShift and KubeVirt",
+  "order": 2,
+  "lead": "Exit VMware on your timetable. Move workloads in waves, with a cost model you can check line by line.",
+  "capsule": "Prodory helps organisations exit VMware in planned waves. We map virtual machines and their dependencies, compare your current renewal against OpenShift Virtualization and KubeVirt on bare metal, and write the wave plan with a tested rollback path for each wave. You receive a written decision (stay, re-platform or exit) and repositories for the target platform that your team owns.",
+  "why": [
+    "Broadcom moved VMware to per-core subscriptions with licensing minimums and renewal penalties, so renewals now need a cost model.",
+    "vSphere 8 reaches end of general support in October 2027, which sets a deadline for planning."
+  ],
+  "scope": [
+    "Inventory and dependency mapping for virtual machines",
+    "Target design: OpenShift Virtualization or KubeVirt, with a decision tree",
+    "Wave plan, cutover runbooks and rollback steps",
+    "Cost comparison against your current renewal terms"
+  ],
+  "outcomes": [
+    "A written decision: stay, re-platform or exit, with the reasons",
+    "Migration waves, each with a tested rollback path",
+    "Repositories for the target platform, owned by you"
+  ],
+  "cta": "Book a VMware exit TCO diagnostic",
+  "enquiryCategory": "vmware",
+  "diagram": {
+    "title": "VMware to OpenShift and KubeVirt, dual path",
+    "caption": "Fig. 2 — One discovery phase feeds two target paths, both cut over in waves.",
+    "steps": [
+      "VMware ESXi estate",
+      "Discovery and dependency map",
+      "Wave plan with rollback per wave",
+      "Path A: OpenShift Virtualization",
+      "Path B: bare-metal KubeVirt",
+      "Validated cutover and decommission"
+    ]
+  },
+  "faqs": [
+    {
+      "q": "Is OpenShift Virtualization the only target?",
+      "a": "No. We compare OpenShift Virtualization with bare-metal KubeVirt and with staying on VMware, using your workloads, licence terms and team skills."
+    },
+    {
+      "q": "How long does an exit take?",
+      "a": "It depends on estate size and dependencies. A diagnostic takes two to three weeks. Migration runs in waves that we agree in advance."
+    }
+  ]
+}

@@ -1,15 +1,11 @@
 ---
-// Enquiry form. Posts to the enquiry Worker (crm.aoplus.in lead). Works without JavaScript:
-// the Worker answers an HTML post with a redirect to /thank-you/ or back to the form with ?error=1.
+// Enquiry form: plain HTML (no JavaScript needed). Posts to /api/enquiry, a Cloudflare Pages Function.
+// Turnstile is loaded only when PUBLIC_TURNSTILE_SITE_KEY is set at build time.
 import { SITE } from '../data/site';
 
-interface Props {
-  id: string;
-  defaultCategory?: string;
-  submit?: string;
-}
-
+interface Props { id: string; defaultCategory?: string; submit?: string }
 const { id, defaultCategory = 'general', submit = 'Send enquiry' } = Astro.props;
+const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY as string | undefined;
 
 const options = [
   ['kubernetes', 'Kubernetes platforms'],
@@ -22,51 +18,65 @@ const options = [
 ];
 const page = Astro.url.pathname;
 ---
-<form id={id} class="grid gap-4" method="post" action={SITE.enquiryUrl}>
+<form id={id} class="grid gap-5" method="post" action={SITE.enquiryPath}>
   <div class="hp" aria-hidden="true">
     <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off" /></label>
   </div>
   <input type="hidden" name="page" value={page} />
 
-  <div class="grid gap-4 sm:grid-cols-2">
-    <label class="grid gap-1 text-sm font-semibold">Full name <span class="text-muted">(required)</span>
-      <input name="name" required minlength="2" autocomplete="name" class="rounded-lg border border-line px-3 py-2 font-normal" />
-    </label>
-    <label class="grid gap-1 text-sm font-semibold">Work email <span class="text-muted">(required)</span>
-      <input name="email" type="email" required autocomplete="email" class="rounded-lg border border-line px-3 py-2 font-normal" />
-    </label>
-    <label class="grid gap-1 text-sm font-semibold">Company
-      <input name="company" autocomplete="organization" class="rounded-lg border border-line px-3 py-2 font-normal" />
-    </label>
-    <label class="grid gap-1 text-sm font-semibold">Phone <span class="text-muted">(optional)</span>
-      <input name="phone" type="tel" autocomplete="tel" class="rounded-lg border border-line px-3 py-2 font-normal" />
-    </label>
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div class="grid gap-1">
+      <label for={`${id}-name`} class="text-sm font-semibold">Full name <span class="font-normal text-[#4B5563]">(required)</span></label>
+      <input id={`${id}-name`} name="name" required minlength={2} autocomplete="name" class="rounded border border-[#D1D5DB] px-3 py-2.5" />
+    </div>
+    <div class="grid gap-1">
+      <label for={`${id}-email`} class="text-sm font-semibold">Work email <span class="font-normal text-[#4B5563]">(required)</span></label>
+      <input id={`${id}-email`} name="email" type="email" required autocomplete="email" aria-describedby={`${id}-email-hint`} class="rounded border border-[#D1D5DB] px-3 py-2.5" />
+      <span id={`${id}-email-hint`} class="text-xs text-[#4B5563]">We use this to reply to your enquiry.</span>
+    </div>
+    <div class="grid gap-1">
+      <label for={`${id}-company`} class="text-sm font-semibold">Company</label>
+      <input id={`${id}-company`} name="company" autocomplete="organization" class="rounded border border-[#D1D5DB] px-3 py-2.5" />
+    </div>
+    <div class="grid gap-1">
+      <label for={`${id}-phone`} class="text-sm font-semibold">Phone <span class="font-normal text-[#4B5563]">(optional)</span></label>
+      <input id={`${id}-phone`} name="phone" type="tel" autocomplete="tel" class="rounded border border-[#D1D5DB] px-3 py-2.5" />
+    </div>
   </div>
 
-  <label class="grid gap-1 text-sm font-semibold">Area of interest
-    <select name="category" class="rounded-lg border border-line bg-paper px-3 py-2 font-normal">
+  <div class="grid gap-1">
+    <label for={`${id}-category`} class="text-sm font-semibold">Area of interest</label>
+    <select id={`${id}-category`} name="category" class="rounded border border-[#D1D5DB] bg-white px-3 py-2.5">
       {options.map(([value, text]) => <option value={value} selected={value === defaultCategory}>{text}</option>)}
     </select>
-  </label>
+  </div>
 
-  <label class="grid gap-1 text-sm font-semibold">What do you need to solve? <span class="text-muted">(required)</span>
-    <textarea name="requirement" rows="5" required minlength="10" class="rounded-lg border border-line px-3 py-2 font-normal"
-      placeholder="For example: 40 VMs on vSphere, renewal in March, three production clusters, no Kubernetes team yet."></textarea>
-  </label>
+  <div class="grid gap-1">
+    <label for={`${id}-req`} class="text-sm font-semibold">What do you need to solve? <span class="font-normal text-[#4B5563]">(required)</span></label>
+    <textarea id={`${id}-req`} name="requirement" rows={5} required minlength={10} aria-describedby={`${id}-req-hint`} class="rounded border border-[#D1D5DB] px-3 py-2.5"></textarea>
+    <span id={`${id}-req-hint`} class="text-xs text-[#4B5563]">For example: 40 VMs on vSphere, renewal in March, three production clusters.</span>
+  </div>
 
-  <label class="flex gap-3 text-sm">
-    <input type="checkbox" name="consent_contact" value="on" required class="mt-1" />
-    <span>I agree that Prodory may contact me about this enquiry. <span class="text-muted">(required)</span></span>
-  </label>
-  <label class="flex gap-3 text-sm">
-    <input type="checkbox" name="consent_marketing" value="on" class="mt-1" />
-    <span>I agree to occasional technical updates from Prodory. I can unsubscribe at any time.</span>
-  </label>
+  <div class="flex gap-3 text-sm">
+    <input id={`${id}-consent`} type="checkbox" name="consent_contact" value="on" required class="mt-1 h-5 w-5 shrink-0" />
+    <label for={`${id}-consent`}>I agree that Prodory (AO Plus Solutions Pvt Ltd) may contact me about this enquiry. <span class="text-[#4B5563]">(required)</span></label>
+  </div>
+  <div class="flex gap-3 text-sm">
+    <input id={`${id}-marketing`} type="checkbox" name="consent_marketing" value="on" class="mt-1 h-5 w-5 shrink-0" />
+    <label for={`${id}-marketing`}>Optional: send me occasional cloud-native architecture guides and infrastructure updates. I can unsubscribe at any time.</label>
+  </div>
+
+  {turnstileKey && (
+    <>
+      <div class="cf-turnstile" data-sitekey={turnstileKey} data-theme="light"></div>
+      <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    </>
+  )}
 
   <div>
-    <button type="submit" class="min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper hover:bg-brand-ink">{submit}</button>
+    <button type="submit" class="min-h-11 rounded bg-[#1D4ED8] px-6 py-3 font-semibold text-white hover:bg-[#1E40AF]">{submit}</button>
   </div>
-  <p class="text-xs text-muted">
-    We use these details to respond to your enquiry. See the <a href="/legal/privacy/">privacy notice</a>. We reply within one working day.
+  <p class="text-xs text-[#4B5563]">
+    Your details are used to respond to this enquiry. Read the <a class="underline" href="/legal/privacy/">privacy notice</a>. We reply within one working day.
   </p>
 </form>

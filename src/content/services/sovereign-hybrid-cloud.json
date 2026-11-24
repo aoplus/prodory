@@ -1,0 +1,45 @@
+{
+  "title": "Sovereign and hybrid private cloud",
+  "order": 3,
+  "lead": "Keep regulated data where your rules require it, and run the platform on your hardware or with a hosting partner.",
+  "capsule": "Prodory designs sovereign and hybrid private cloud for Indian organisations that must keep certain data in India or on infrastructure they control. We map each workload to its residency and control requirements under DPDP, sector regulator rules and CERT-In directions, then build those controls in code, with audit logs retained for the required period.",
+  "why": [
+    "DPDP Act obligations take full effect on 13 May 2027, including encryption, audit logs and breach reporting.",
+    "CERT-In directions set incident-reporting and ICT log-retention duties, which affect where logs can be stored and for how long."
+  ],
+  "scope": [
+    "Residency and sovereignty mapping for each workload",
+    "Private cloud design on your hardware or a hosting partner",
+    "Controls mapped to DPDP and to your sector regulator",
+    "Logging and audit retention designed in from the start"
+  ],
+  "outcomes": [
+    "A control map your compliance team can review line by line",
+    "A deployment you can audit and move if needed",
+    "Documented encryption, access and backup procedures"
+  ],
+  "cta": "Book a sovereign architecture briefing",
+  "enquiryCategory": "sovereign",
+  "diagram": {
+    "title": "Sovereign and hybrid control map",
+    "caption": "Fig. 3 — Public cloud and sovereign private estate, governed by the same controls and log retention.",
+    "steps": [
+      "Workload classification (residency and sensitivity)",
+      "Sovereign private estate (India, your hardware)",
+      "Public cloud for non-regulated workloads",
+      "Policy-as-code guardrails",
+      "Encrypted audit logs, retained per CERT-In and DPDP",
+      "Compliance evidence pack"
+    ]
+  },
+  "faqs": [
+    {
+      "q": "Does sovereign mean the same as data residency?",
+      "a": "Not quite. Residency is where data sits. Sovereignty also covers who can access it and the keys that protect it. We design for both, and the choice depends on your obligations."
+    },
+    {
+      "q": "Do you provide legal advice?",
+      "a": "No. We design the technical controls and document them. Your legal or compliance team interprets the obligations."
+    }
+  ]
+}

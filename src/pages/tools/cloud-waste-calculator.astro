@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro';
+import WasteCalculator from '../../components/islands/WasteCalculator';
+---
+<Base title="Cloud Waste Calculator | Prodory" description="An illustrative estimate of annual cloud and Kubernetes waste savings. Assumptions are editable and nothing is stored." path="/tools/cloud-waste-calculator/">
+  <section class="mx-auto max-w-[1000px] px-4 py-16">
+    <h1 class="text-4xl font-bold tracking-tight">Cloud waste calculator</h1>
+    <p class="mt-4 text-lg text-[#4B5563]">An illustrative estimate, not a measurement. Change the assumptions to see how the range moves. Nothing you enter is sent or stored.</p>
+    <div class="mt-10"><WasteCalculator client:visible /></div>
+  </section>
+</Base>

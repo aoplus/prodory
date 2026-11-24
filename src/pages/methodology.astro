@@ -1,26 +1,16 @@
 ---
 import Base from '../layouts/Base.astro';
-const stages = [
-  ['1. Discover', 'Read the current estate, dependencies, costs and constraints. Nothing changes in this stage.'],
-  ['2. Architect', 'Write the target design and the trade-offs. Decisions are recorded with their reasons.'],
-  ['3. Build as code', 'Every resource, cluster and policy is defined in a repository your organisation owns, reviewed through pull requests.'],
-  ['4. Validate and cut over', 'Test in a non-production environment, then move workloads in waves, each with a rollback path.'],
-  ['5. Hand over and operate', 'Runbooks, training and a handover review. Your team can run the platform without us.'],
-];
 ---
-<Base title="Methodology | Prodory" description="Prodory’s five-stage engineering delivery lifecycle for cloud migration and Kubernetes platforms." path="/methodology/">
-  <article class="mx-auto max-w-4xl px-4 py-14">
-    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / Methodology</nav>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight">How we deliver</h1>
-    <p class="mt-4 text-lg text-muted">Five stages, in order. Each ends with a written artefact you can review, and none of them starts before the one before it is accepted.</p>
-    <ol class="mt-10 space-y-4">
-      {stages.map(([title, text]) => (
-        <li class="rounded-xl border border-line p-5">
-          <h2 class="text-lg font-semibold">{title}</h2>
-          <p class="mt-1 text-muted">{text}</p>
-        </li>
-      ))}
+<Base title="Delivery Methodology | Prodory" description="How Prodory delivers platform work: discovery, design as code, reviewed change, handover and a runbook your team can operate." path="/methodology/">
+  <section class="mx-auto max-w-[900px] px-4 py-16">
+    <h1 class="text-4xl font-bold tracking-tight">Delivery methodology</h1>
+    <p class="mt-4 text-lg text-[#4B5563]">Every engagement follows the same five stages. Each stage ends with a written artefact you keep.</p>
+    <ol class="mt-12 grid gap-8">
+      <li><h2 class="text-xl font-semibold">1. Discovery</h2><p class="mt-2 text-[#4B5563]">We read your current accounts, clusters and dependencies. Output: an inventory and a risk list.</p></li>
+      <li><h2 class="text-xl font-semibold">2. Design as code</h2><p class="mt-2 text-[#4B5563]">The target design is written as Terraform, OpenTofu, Ansible or GitOps manifests in your repositories. Output: a reviewed design.</p></li>
+      <li><h2 class="text-xl font-semibold">3. Reviewed change</h2><p class="mt-2 text-[#4B5563]">Changes arrive as pull requests with policy checks. Nothing reaches production without your review. Output: an audit trail in Git.</p></li>
+      <li><h2 class="text-xl font-semibold">4. Cutover in waves</h2><p class="mt-2 text-[#4B5563]">Each wave has a rollback path that is tested before the cutover. Output: a wave report.</p></li>
+      <li><h2 class="text-xl font-semibold">5. Handover</h2><p class="mt-2 text-[#4B5563]">Runbooks, a readiness checklist and a session with the team that will operate the platform. Output: a handover pack.</p></li>
     </ol>
-    <p class="mt-10"><a href="/architecture-review/" class="inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline">Start with Stage 1: book a review</a></p>
-  </article>
+  </section>
 </Base>

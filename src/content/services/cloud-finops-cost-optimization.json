@@ -1,0 +1,44 @@
+{
+  "title": "Cloud and Kubernetes cost optimisation",
+  "order": 5,
+  "lead": "Find where the money goes, then fix it in the platform: nodes, storage, autoscaling and idle resources.",
+  "capsule": "Prodory finds cloud and Kubernetes waste and fixes it in code. A two-week diagnostic reads your accounts and clusters, ranks savings by value and effort, and delivers the best changes as pull requests your team reviews. Levers include idle cleanup, rightsizing, Karpenter, Graviton (ARM) where supported, Spot, storage tiering, and commitments last.",
+  "why": [
+    "Self-estimated cloud waste rose in 2026 for the first time in five years, according to the FinOps Foundation's industry synthesis.",
+    "Buyers now want cost attribution by team or service, and changes delivered as code rather than as dashboards."
+  ],
+  "scope": [
+    "Two-week waste diagnostic across accounts and clusters",
+    "Rightsizing and autoscaling changes made in code",
+    "Storage cleanup: unused volumes, snapshots and lifecycle rules",
+    "Cost attribution by team, namespace or service"
+  ],
+  "outcomes": [
+    "A ranked list of savings, each with the engineering effort it needs",
+    "Changes delivered as pull requests you review and merge",
+    "Cost reporting built on data you already have"
+  ],
+  "cta": "Get a two-week waste diagnostic",
+  "enquiryCategory": "finops",
+  "diagram": {
+    "title": "Five-lever savings sequence",
+    "caption": "Fig. 5 — Levers in order of effort. Commitments come last, after the workload is right-sized.",
+    "steps": [
+      "1. Idle cleanup",
+      "2. Pod and database rightsizing",
+      "3. Karpenter and Graviton (ARM) where supported",
+      "4. Spot capacity and storage tiering",
+      "5. Commitments, once usage is stable"
+    ]
+  },
+  "faqs": [
+    {
+      "q": "Do you take a share of the savings?",
+      "a": "Not by default. Pricing is set in the scoped estimate. Any success-fee model is written into the engagement before work begins."
+    },
+    {
+      "q": "Will you change production without approval?",
+      "a": "No. Every change arrives as a pull request. We do not change production without your review and approval."
+    }
+  ]
+}

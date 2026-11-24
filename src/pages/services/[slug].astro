@@ -1,49 +1,54 @@
 ---
 import Base from '../../layouts/Base.astro';
+import FlowDiagram from '../../components/FlowDiagram.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
-import { SERVICES } from '../../data/services';
+import WorksWith from '../../components/WorksWith.astro';
+import { getCollection } from 'astro:content';
 
-export function getStaticPaths() {
-  return SERVICES.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
 }
 
-const { service } = Astro.props;
+const { entry } = Astro.props;
+const s = entry.data;
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'Service', name: s.title, description: s.capsule, provider: { '@type': 'Organization', name: 'Prodory' }, areaServed: 'IN' },
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: s.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
 ---
-<Base title={`${service.title} | Prodory`} description={service.lead} path={`/services/${service.slug}/`}>
-  <article class="mx-auto max-w-4xl px-4 py-14">
-    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / <a href="/services/">Services</a> / {service.title}</nav>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight">{service.title}</h1>
-    <p class="mt-4 text-lg text-muted">{service.lead}</p>
-    <p class="mt-6"><a href="/architecture-review/" class="inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline">{service.cta}</a></p>
+<Base title={`${s.title} | Prodory`} description={s.capsule.slice(0, 155)} path={`/services/${entry.id}/`} jsonLd={jsonLd}>
+  <article class="mx-auto max-w-[1240px] px-4 py-14">
+    <nav aria-label="Breadcrumb" class="text-sm text-[#4B5563]"><a href="/services/">Services</a> / {s.title}</nav>
+    <h1 class="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight">{s.title}</h1>
+    <p class="mt-4 max-w-3xl text-lg text-[#4B5563]">{s.lead}</p>
+    <p class="mt-6 max-w-3xl rounded border border-[#E5E7EB] bg-[#F8F9FA] p-5 text-[#111827]" data-capsule>{s.capsule}</p>
 
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold">Why now</h2>
-      <ul class="mt-4 list-disc space-y-2 pl-6 text-muted">
-        {service.why.map((w) => <li>{w}</li>)}
-      </ul>
+    <div class="mt-12 grid gap-12 lg:grid-cols-[1fr_1fr]">
+      <section>
+        <h2 class="text-2xl font-semibold">Why this matters</h2>
+        <ul class="mt-4 grid list-disc gap-3 pl-5 text-[#4B5563]">{s.why.map((w) => <li>{w}</li>)}</ul>
+        <h2 class="mt-10 text-2xl font-semibold">Scope</h2>
+        <ul class="mt-4 grid list-disc gap-3 pl-5 text-[#4B5563]">{s.scope.map((w) => <li>{w}</li>)}</ul>
+        <h2 class="mt-10 text-2xl font-semibold">What you receive</h2>
+        <ul class="mt-4 grid list-disc gap-3 pl-5 text-[#4B5563]">{s.outcomes.map((w) => <li>{w}</li>)}</ul>
+      </section>
+      <section>
+        <FlowDiagram title={s.diagram.title} caption={s.diagram.caption} steps={s.diagram.steps} />
+      </section>
+    </div>
+
+    <section class="mt-14" aria-labelledby="faq-h">
+      <h2 id="faq-h" class="text-2xl font-semibold">Questions</h2>
+      <dl class="mt-6 grid gap-6 md:grid-cols-2">
+        {s.faqs.map((f) => <div><dt class="font-semibold">{f.q}</dt><dd class="mt-2 text-sm text-[#4B5563]">{f.a}</dd></div>)}
+      </dl>
     </section>
 
-    <section class="mt-12 grid gap-8 md:grid-cols-2">
-      <div>
-        <h2 class="text-2xl font-bold">What we do</h2>
-        <ul class="mt-4 list-disc space-y-2 pl-6 text-muted">
-          {service.scope.map((s) => <li>{s}</li>)}
-        </ul>
-      </div>
-      <div>
-        <h2 class="text-2xl font-bold">What you get</h2>
-        <ul class="mt-4 list-disc space-y-2 pl-6 text-muted">
-          {service.outcomes.map((o) => <li>{o}</li>)}
-        </ul>
-      </div>
-    </section>
-
-    <section class="mt-16 rounded-xl border border-line p-6">
-      <h2 class="text-2xl font-bold">Start with an enquiry</h2>
-      <p class="mt-2 text-muted">Tell us about your environment. We reply within one working day.</p>
-      <div class="mt-6">
-        <EnquiryForm id={`enquiry-${service.slug}`} defaultCategory={service.category} />
-      </div>
+    <section class="mt-14 border-t border-[#E5E7EB] pt-12" aria-labelledby="enq-h">
+      <h2 id="enq-h" class="text-2xl font-semibold">{s.cta}</h2>
+      <div class="mt-6 max-w-2xl"><EnquiryForm id={`enq-${entry.id}`} defaultCategory={s.enquiryCategory} submit={s.cta} /></div>
     </section>
   </article>
+  <WorksWith />
 </Base>

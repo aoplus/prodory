@@ -1,0 +1,46 @@
+{
+  "title": "Kubernetes platforms",
+  "order": 1,
+  "lead": "Production clusters you can operate: design, build, hardening and handover, in a repository your organisation owns.",
+  "capsule": "Prodory designs and builds production Kubernetes platforms on bare metal, virtual machines or managed services (EKS, AKS, GKE). The work covers cluster topology, network policy with Cilium eBPF where it fits, the platform layer and day-2 runbooks. Every component is code in repositories your team owns, and the handover includes a scored readiness checklist.",
+  "why": [
+    "Most organisations running containers in production have thin platform teams, so clusters drift from their design.",
+    "CPU overprovisioning across clusters rose sharply in 2025 and 2026 telemetry studies, which points to architecture drift rather than normal headroom."
+  ],
+  "scope": [
+    "Cluster design for bare metal, VMs, or EKS, AKS and GKE",
+    "Networking and policy, including Cilium eBPF where it fits",
+    "Platform layer: ingress, observability, secrets management and GitOps delivery",
+    "Day-2 runbooks and an on-call handover"
+  ],
+  "outcomes": [
+    "Terraform modules and cluster repositories in your organisation",
+    "A production readiness checklist, scored at handover",
+    "Documented upgrade and recovery procedures",
+    "Your team trained to operate the platform"
+  ],
+  "cta": "Request a Kubernetes readiness audit",
+  "enquiryCategory": "kubernetes",
+  "diagram": {
+    "title": "Multi-cluster Kubernetes topology",
+    "caption": "Fig. 1 — Control plane, CNI, workload isolation and GitOps delivery, as one reviewed path.",
+    "steps": [
+      "Git repository (desired state)",
+      "GitOps controller (Argo CD or Flux)",
+      "Cluster control plane",
+      "Cilium eBPF CNI and network policy",
+      "Isolated workload namespaces",
+      "Observability and audit logs"
+    ]
+  },
+  "faqs": [
+    {
+      "q": "Do you run clusters on our own hardware?",
+      "a": "Yes. We design for bare-metal Linux, KubeVirt and managed Kubernetes services, and choose the target with you based on residency, cost and team skills."
+    },
+    {
+      "q": "Who operates the cluster after handover?",
+      "a": "Your team. The handover includes repositories, runbooks and a readiness checklist. Any ongoing support is a separate, written agreement."
+    }
+  ]
+}

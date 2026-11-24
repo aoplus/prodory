@@ -1,0 +1,12 @@
+---
+// Prodory brand mark: the cloud-lightning icon from the live site, and the "Prodory" wordmark.
+// Source: public/images/prodory-logo-mark.svg (copied from prodory.com/icon.svg, unchanged).
+interface Props { size?: 'sm' | 'md' }
+const { size = 'md' } = Astro.props;
+const dims = size === 'sm' ? 20 : 24;
+const text = size === 'sm' ? 'text-lg' : 'text-xl';
+---
+<span class="inline-flex items-center gap-2">
+  <img src="/images/prodory-logo-mark.svg" width={dims} height={dims} alt="" aria-hidden="true" />
+  <span class={`${text} font-bold tracking-tight text-[#1D4ED8]`}>Prodory</span>
+</span>

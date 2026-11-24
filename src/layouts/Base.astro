@@ -9,10 +9,25 @@ interface Props {
   description: string;
   path: string;
   noindex?: boolean;
+  jsonLd?: Record<string, unknown>[];
 }
 
-const { title, description, path, noindex = false } = Astro.props;
+const { title, description, path, noindex = false, jsonLd = [] } = Astro.props;
 const canonical = new URL(path, SITE.url).href;
+
+// Organization schema on every page: the parent company facts from the registry, and the sameAs profiles.
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Prodory',
+  url: SITE.url,
+  parentOrganization: { '@type': 'Organization', name: SITE.parent, taxID: SITE.pan, identifier: SITE.cin },
+  address: { '@type': 'PostalAddress', streetAddress: `${SITE.head.line1}, ${SITE.head.line2}`, addressLocality: 'Dombivli', addressRegion: 'Maharashtra', postalCode: '421204', addressCountry: 'IN' },
+  email: `mailto:${SITE.email}`,
+  telephone: SITE.phone,
+  foundingDate: String(SITE.founded),
+};
+const schemas = [organization, ...jsonLd];
 ---
 <!doctype html>
 <html lang="en">
@@ -22,17 +37,18 @@ const canonical = new URL(path, SITE.url).href;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+    {noindex ? <meta name="robots" content="noindex" /> : <meta name="robots" content="index,follow" />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
+    {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
-  <body class="min-h-dvh flex flex-col">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:m-3 focus:bg-white focus:p-2">Skip to content</a>
+  <body class="min-h-dvh flex flex-col bg-white text-[#111827] antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[60] focus:rounded focus:bg-white focus:p-3 focus:shadow">Skip to content</a>
     <Header />
-    <main id="main" class="flex-1">
+    <main id="main" class="flex-1 scroll-mt-24">
       <slot />
     </main>
     <Footer />

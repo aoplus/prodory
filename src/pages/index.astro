@@ -1,114 +1,93 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SITE, PILLARS } from '../data/site';
-import { INDUSTRIES } from '../data/industries';
+import WorksWith from '../components/WorksWith.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../data/site';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const industries = (await getCollection('industries')).sort((a, b) => a.data.order - b.data.order);
+
+const faqs = [
+  { q: 'What does Prodory build?', a: 'Production Kubernetes platforms, VMware exits to OpenShift or KubeVirt, sovereign and hybrid private cloud, infrastructure automation, and cloud cost work, all delivered as code in repositories you own.' },
+  { q: 'Who owns the code and infrastructure definitions?', a: 'Your organisation. Repositories are created in your own Git organisation and handed over with documentation.' },
+  { q: 'Where is Prodory based?', a: `${SITE.head.line2}, ${SITE.head.line3}. Prodory is a practice of ${SITE.parent}.` },
+];
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) },
+];
 ---
 <Base
-  title="Prodory | Kubernetes, VMware exit and cloud cost engineering"
-  description="Cloud-native infrastructure, Kubernetes and platform engineering for Indian enterprises and GCCs. Platforms you own."
+  title="Cloud-Native Infrastructure, Kubernetes & Platform Engineering Partner | Prodory"
+  description="Prodory designs and operates production Kubernetes platforms, VMware exits to OpenShift and KubeVirt, sovereign private cloud and infrastructure automation, delivered as code you own."
   path="/"
+  jsonLd={jsonLd}
 >
-  <section class="border-b border-line">
-    <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 lg:grid-cols-[3fr_2fr] lg:items-center">
+  <section class="border-b border-[#E5E7EB]">
+    <div class="mx-auto grid max-w-[1240px] gap-10 px-4 py-16 lg:grid-cols-[1.2fr_1fr] lg:py-24">
       <div>
-        <p class="text-sm font-semibold uppercase tracking-wide text-brand">Cloud-native infrastructure · Kubernetes · Platform engineering</p>
-        <h1 class="mt-3 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">Platforms you own, built and run by engineers who work in the terminal.</h1>
-        <p class="mt-5 max-w-2xl text-lg text-muted">
-          We design and build production Kubernetes platforms, move workloads off VMware, and cut cloud and cluster waste with code you keep.
-          Every repository, runbook and configuration is handed over to you.
-        </p>
-        <div class="mt-7 flex flex-wrap gap-3">
-          <a href={SITE.primaryCta.href} class="min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline hover:bg-brand-ink">{SITE.primaryCta.label}</a>
-          <a href="/services/" class="min-h-11 rounded-lg border border-line px-5 py-3 font-semibold text-ink no-underline hover:bg-card">See our services</a>
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-[#1D4ED8]">Cloud-native infrastructure · Kubernetes · Platform engineering</p>
+        <h1 class="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-5xl">Production platforms your team can run, in code you own.</h1>
+        <p class="mt-5 max-w-2xl text-lg text-[#4B5563]">Prodory designs, builds and hands over Kubernetes platforms, VMware exits, sovereign private cloud and infrastructure automation. Every component is code in your repositories, with a handover your team can run without us.</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/architecture-review/" class="inline-flex min-h-11 items-center rounded bg-[#1D4ED8] px-5 font-semibold text-white no-underline hover:bg-[#1E40AF]">Book a 30-min architecture review</a>
+          <a href="/services/" class="inline-flex min-h-11 items-center rounded border border-[#D1D5DB] px-5 font-semibold text-[#111827] no-underline hover:bg-[#F8F9FA]">Explore services</a>
         </div>
       </div>
-      <aside aria-label="Engagement at a glance" class="rounded-xl border border-line bg-card p-6 text-sm">
-        <p class="font-semibold">Start with a 30-minute architecture review</p>
-        <ol class="mt-4 list-decimal space-y-3 pl-5 text-muted">
-          <li>Tell us what you run and what is driving the change.</li>
-          <li>We reply within one working day with a time to talk.</li>
-          <li>You receive a written summary: current state, risks and options.</li>
-        </ol>
+      <aside class="grid content-start gap-3 rounded border border-[#E5E7EB] bg-[#F8F9FA] p-6 text-sm">
+        <p class="font-semibold">Where we start</p>
+        <ul class="grid list-none gap-3 p-0">
+          <li>1. Architecture review of your current platform, scored against a readiness checklist.</li>
+          <li>2. A written decision: stay, re-platform or exit, with the cost reasons.</li>
+          <li>3. Waves of change, each with a tested rollback path and a handover.</li>
+        </ul>
       </aside>
     </div>
   </section>
 
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl font-bold">Three deadlines shaping infrastructure budgets</h2>
-      <div class="mt-6 grid gap-4 md:grid-cols-3">
-        <article class="rounded-xl border border-line bg-card p-5">
-          <h3 class="font-semibold">VMware licensing has changed</h3>
-          <p class="mt-2 text-sm text-muted">Broadcom’s per-core subscriptions and renewal penalties have made VMware renewals a board-level decision. A planned exit beats a rushed one.</p>
-        </article>
-        <article class="rounded-xl border border-line bg-card p-5">
-          <h3 class="font-semibold">Cloud bills grow faster than workloads</h3>
-          <p class="mt-2 text-sm text-muted">Idle clusters, over-provisioned nodes and unused storage are common. The fix is engineering work in the platform, not another dashboard.</p>
-        </article>
-        <article class="rounded-xl border border-line bg-card p-5">
-          <h3 class="font-semibold">DPDP obligations take full effect on 13 May 2027</h3>
-          <p class="mt-2 text-sm text-muted">Encryption, audit logs and breach reporting apply to regulated data. Infrastructure decisions made now decide how hard compliance is later.</p>
-        </article>
-      </div>
+  <section class="mx-auto max-w-[1240px] px-4 py-16" aria-labelledby="services-h">
+    <h2 id="services-h" class="text-3xl font-bold tracking-tight">Five ways we help</h2>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {services.map((s) => (
+        <a href={`/services/${s.id}/`} class="block rounded border border-[#E5E7EB] p-6 no-underline hover:border-[#1D4ED8]">
+          <h3 class="text-lg font-semibold text-[#111827]">{s.data.title}</h3>
+          <p class="mt-2 text-sm text-[#4B5563]">{s.data.lead}</p>
+        </a>
+      ))}
     </div>
   </section>
 
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl font-bold">What we do</h2>
-      <div class="mt-6 grid gap-4 sm:grid-cols-2">
-        {PILLARS.map((p) => (
-          <a href={`/services/${p.slug}/`} class="group rounded-xl border border-line p-5 no-underline hover:border-brand">
-            <h3 class="font-semibold text-ink group-hover:text-brand">{p.title}</h3>
-            <p class="mt-2 text-sm text-muted">{p.text}</p>
-          </a>
+  <WorksWith />
+
+  <section class="mx-auto max-w-[1240px] px-4 py-16" aria-labelledby="ind-h">
+    <h2 id="ind-h" class="text-3xl font-bold tracking-tight">Who we work with</h2>
+    <div class="mt-8 grid gap-5 md:grid-cols-3">
+      {industries.map((i) => (
+        <a href={`/industries/${i.id}/`} class="block rounded border border-[#E5E7EB] p-6 no-underline hover:border-[#1D4ED8]">
+          <h3 class="text-lg font-semibold text-[#111827]">{i.data.title}</h3>
+          <p class="mt-2 text-sm text-[#4B5563]">{i.data.lead}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-[#E5E7EB] bg-[#F8F9FA]">
+    <div class="mx-auto max-w-[1240px] px-4 py-16">
+      <h2 class="text-3xl font-bold tracking-tight">Frequently asked</h2>
+      <dl class="mt-8 grid gap-6 md:grid-cols-3">
+        {faqs.map((f) => (
+          <div>
+            <dt class="font-semibold">{f.q}</dt>
+            <dd class="mt-2 text-sm text-[#4B5563]">{f.a}</dd>
+          </div>
         ))}
-      </div>
+      </dl>
     </div>
   </section>
 
-  <section class="border-b border-line bg-card">
-    <div class="mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl font-bold">How an engagement starts</h2>
-      <div class="mt-6 grid gap-4 md:grid-cols-3">
-        <div class="rounded-xl bg-paper p-5"><h3 class="font-semibold">1. Architecture review</h3><p class="mt-2 text-sm text-muted">Week 1. A 30-minute call and a written summary of your current state, risks and options. No charge.</p></div>
-        <div class="rounded-xl bg-paper p-5"><h3 class="font-semibold">2. Pilot</h3><p class="mt-2 text-sm text-muted">Weeks 2 to 12. One workload or cluster, with read-only access to start. You see the code before you commit to more.</p></div>
-        <div class="rounded-xl bg-paper p-5"><h3 class="font-semibold">3. Rollout</h3><p class="mt-2 text-sm text-muted">From month 4. The platform moves into production in waves, and your team takes over the repositories as we go.</p></div>
-      </div>
-      <p class="mt-6 text-sm"><a href="/engagement-models/" class="font-semibold">Compare engagement models</a> · <a href="/methodology/" class="font-semibold">Read our delivery methodology</a></p>
-    </div>
-  </section>
-
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl font-bold">Engineering practice</h2>
-      <p class="mt-4 max-w-3xl text-muted">
-        Our own infrastructure runs the stack we recommend: bare-metal Linux and KubeVirt virtualisation on ARM64 nodes, Cilium eBPF networking,
-        rootless Podman for container isolation, Red Hat Satellite for errata management, and Terraform-driven multi-cloud pipelines.
-      </p>
-      <p class="mt-4 text-sm"><a href="/about/" class="font-semibold">About the team and the company</a></p>
-    </div>
-  </section>
-
-  <section class="border-b border-line">
-    <div class="mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl font-bold">Industries we serve</h2>
-      <ul class="mt-6 grid gap-4 md:grid-cols-3">
-        {INDUSTRIES.map((i) => (
-          <li><a href={`/industries/${i.slug}/`} class="block h-full rounded-xl border border-line p-5 no-underline hover:border-brand">
-            <h3 class="font-semibold text-ink">{i.title}</h3>
-            <p class="mt-2 text-sm text-muted">{i.lead}</p>
-          </a></li>
-        ))}
-      </ul>
-    </div>
-  </section>
-
-  <section>
-    <div class="mx-auto max-w-6xl px-4 py-14">
-      <h2 class="text-2xl font-bold">Not sure where to start?</h2>
-      <p class="mt-3 max-w-2xl text-muted">Most clients begin with a 30-minute architecture review. We tell you which service fits, or that you do not need us yet.</p>
-      <a href={SITE.primaryCta.href} class="mt-6 inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline hover:bg-brand-ink">{SITE.primaryCta.label}</a>
-    </div>
+  <section class="mx-auto max-w-[760px] px-4 py-16" aria-labelledby="enq-h">
+    <h2 id="enq-h" class="text-3xl font-bold tracking-tight">Start with an enquiry</h2>
+    <p class="mt-3 text-[#4B5563]">Tell us what you need to solve. We reply within one working day.</p>
+    <div class="mt-8"><EnquiryForm id="home-enquiry" /></div>
   </section>
 </Base>

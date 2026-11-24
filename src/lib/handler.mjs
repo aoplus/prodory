@@ -13,9 +13,29 @@ export function rateOk(ip, limit = 5, windowMs = 10 * 60 * 1000, now = Date.now(
   arr.push(now); hits.set(ip, arr); return true;
 }
 
+// Cloudflare Turnstile server-side check. Active only when TURNSTILE_SECRET_KEY is set in the Pages project.
+export async function verifyTurnstile(token, ip, env = {}, fetchImpl = fetch) {
+  if (!env.TURNSTILE_SECRET_KEY) return true;
+  if (!token || typeof token !== 'string') return false;
+  try {
+    const r = await fetchImpl('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      body: new URLSearchParams({ secret: env.TURNSTILE_SECRET_KEY, response: token, remoteip: ip }),
+    });
+    const j = await r.json();
+    return j.success === true;
+  } catch (e) {
+    console.error('Turnstile verify failed:', e.message);
+    return false;
+  }
+}
+
 // Runs the full pipeline. Returns { status, body }.
-export async function handleEnquiry(input, { ip = 'unknown', env = {} } = {}) {
+export async function handleEnquiry(input, { ip = 'unknown', env = {}, fetchImpl } = {}) {
   if (!rateOk(ip)) return { status: 429, body: { ok: false, error: 'Too many enquiries from this network. Please try again later or email hello@prodory.com.' } };
+  if (!(await verifyTurnstile(input['cf-turnstile-response'], ip, env, fetchImpl))) {
+    return { status: 400, body: { ok: false, error: 'Verification failed. Please try again.' } };
+  }
 
   const v = validate(input);
   if (v.errors.form === 'spam') return { status: 200, body: { ok: true } }; // silently accept honeypot hits

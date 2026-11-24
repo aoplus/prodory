@@ -1,33 +1,25 @@
 ---
 import Base from '../../layouts/Base.astro';
 import EnquiryForm from '../../components/EnquiryForm.astro';
-import { INDUSTRIES } from '../../data/industries';
+import { getCollection } from 'astro:content';
 
-export function getStaticPaths() {
-  return INDUSTRIES.map((i) => ({ params: { slug: i.slug }, props: { industry: i } }));
+export async function getStaticPaths() {
+  const items = await getCollection('industries');
+  return items.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
 }
 
-const { industry } = Astro.props;
+const { entry } = Astro.props;
+const d = entry.data;
 ---
-<Base title={`${industry.title} | Prodory`} description={industry.lead} path={`/industries/${industry.slug}/`}>
-  <article class="mx-auto max-w-4xl px-4 py-14">
-    <nav aria-label="Breadcrumb" class="text-sm text-muted"><a href="/">Home</a> / Industries / {industry.title}</nav>
-    <h1 class="mt-3 text-4xl font-bold tracking-tight">{industry.title}</h1>
-    <p class="mt-4 text-lg text-muted">{industry.lead}</p>
-    <p class="mt-6"><a href="/architecture-review/" class="inline-block min-h-11 rounded-lg bg-ink px-5 py-3 font-semibold text-paper no-underline">{industry.cta}</a></p>
-
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold">Where we help</h2>
-      <ul class="mt-4 list-disc space-y-2 pl-6 text-muted">
-        {industry.points.map((p) => <li>{p}</li>)}
-      </ul>
-    </section>
-
-    <section class="mt-16 rounded-xl border border-line p-6">
-      <h2 class="text-2xl font-bold">Start with an enquiry</h2>
-      <div class="mt-6">
-        <EnquiryForm id={`enquiry-${industry.slug}`} defaultCategory="general" />
-      </div>
+<Base title={`${d.title} | Prodory`} description={d.lead.slice(0, 155)} path={`/industries/${entry.id}/`}>
+  <article class="mx-auto max-w-[1240px] px-4 py-14">
+    <nav aria-label="Breadcrumb" class="text-sm text-[#4B5563]"><a href="/">Home</a> / Industries / {d.title}</nav>
+    <h1 class="mt-4 max-w-3xl text-4xl font-bold leading-tight tracking-tight">{d.title}</h1>
+    <p class="mt-4 max-w-3xl text-lg text-[#4B5563]">{d.lead}</p>
+    <ul class="mt-10 grid max-w-3xl list-disc gap-3 pl-5 text-[#4B5563]">{d.points.map((p) => <li>{p}</li>)}</ul>
+    <section class="mt-14 border-t border-[#E5E7EB] pt-12" aria-labelledby="enq-h">
+      <h2 id="enq-h" class="text-2xl font-semibold">{d.cta}</h2>
+      <div class="mt-6 max-w-2xl"><EnquiryForm id={`enq-${entry.id}`} defaultCategory={d.enquiryCategory} submit={d.cta} /></div>
     </section>
   </article>
 </Base>
