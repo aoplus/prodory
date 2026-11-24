@@ -18,10 +18,11 @@ const canonical = new URL(path, SITE.url).href;
 // Organization schema on every page: the parent company facts from the registry, and the sameAs profiles.
 const organization = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': ['Organization', 'ProfessionalService'],
   name: 'Prodory',
   url: SITE.url,
-  parentOrganization: { '@type': 'Organization', name: SITE.parent, taxID: SITE.pan, identifier: SITE.cin },
+  parentOrganization: { '@type': 'Organization', name: SITE.parent, identifier: [{ '@type': 'PropertyValue', name: 'CIN', value: SITE.cin }, { '@type': 'PropertyValue', name: 'GSTIN', value: SITE.gstin }, { '@type': 'PropertyValue', name: 'PAN', value: SITE.pan }] },
+  taxID: SITE.gstin,
   address: { '@type': 'PostalAddress', streetAddress: `${SITE.head.line1}, ${SITE.head.line2}`, addressLocality: 'Dombivli', addressRegion: 'Maharashtra', postalCode: '421204', addressCountry: 'IN' },
   email: `mailto:${SITE.email}`,
   telephone: SITE.phone,
@@ -43,6 +44,14 @@ const schemas = [organization, ...jsonLd];
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Prodory" />
+    <meta property="og:image" content={new URL('/images/og-default.png', SITE.url).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/images/og-default.png', SITE.url).href} />
     {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body class="min-h-dvh flex flex-col bg-white text-[#111827] antialiased">

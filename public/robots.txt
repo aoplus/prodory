@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://prodory.com/sitemap-index.xml
+Sitemap: https://prodory.com/sitemap.xml

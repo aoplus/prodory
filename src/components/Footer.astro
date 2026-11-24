@@ -13,6 +13,8 @@ const year = new Date().getFullYear();
         <li>Call: <a class="text-[#111827]" href={`tel:${SITE.phoneTel}`}>{SITE.phone}</a></li>
         <li>WhatsApp: <a class="text-[#111827]" href={SITE.whatsapp} rel="noopener">{SITE.phone}</a></li>
         <li>Book a call: <a class="text-[#111827]" href={SITE.calendly} rel="noopener">Calendly</a></li>
+        {SITE.social.linkedin && <li>LinkedIn: <a class="text-[#111827]" href={SITE.social.linkedin} rel="me noopener">Prodory</a></li>}
+        {SITE.social.youtube && <li>YouTube: <a class="text-[#111827]" href={SITE.social.youtube} rel="me noopener">Prodory</a></li>}
       </ul>
     </div>
     <div>

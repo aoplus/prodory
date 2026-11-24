@@ -24,6 +24,8 @@ export const SITE = {
   whatsapp: 'https://wa.me/917977875818',
   calendly: 'https://calendly.com/aoplusin',
   email: 'hello@prodory.com',
+  // Official profiles. Leave empty until the URL is verified; the footer shows only non-empty links.
+  social: { linkedin: '', youtube: '' },
   // Pages Function that receives every form on the site (same origin, no CORS).
   enquiryPath: '/api/enquiry',
 } as const;

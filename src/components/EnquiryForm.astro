@@ -20,7 +20,7 @@ const page = Astro.url.pathname;
 ---
 <form id={id} class="grid gap-5" method="post" action={SITE.enquiryPath}>
   <div class="hp" aria-hidden="true">
-    <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off" /></label>
+    <label>Leave this field empty <input name="website" tabindex="-1" autocomplete="off" aria-label="Leave this field empty" /></label>
   </div>
   <input type="hidden" name="page" value={page} />
 

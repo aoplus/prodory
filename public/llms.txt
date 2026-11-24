@@ -1,0 +1,20 @@
+# Prodory
+
+> Prodory is the cloud-native infrastructure, Kubernetes and platform engineering practice of AO Plus Solutions Pvt Ltd, based in Dombivli, Maharashtra, India. It serves BFSI, SaaS and global capability centres in India.
+
+Services:
+- Kubernetes platforms: production clusters on bare metal, VMs, EKS, AKS and GKE. https://prodory.com/services/kubernetes-platforms/
+- VMware to OpenShift and KubeVirt migration, in waves with rollback. https://prodory.com/services/vmware-to-openshift-migration/
+- Sovereign and hybrid private cloud, mapped to DPDP and CERT-In obligations. https://prodory.com/services/sovereign-hybrid-cloud/
+- Infrastructure automation and GitOps with Terraform, OpenTofu, Ansible and Argo CD. https://prodory.com/services/infrastructure-automation-iac/
+- Cloud and Kubernetes cost optimisation, delivered as pull requests. https://prodory.com/services/cloud-finops-cost-optimization/
+
+Principles: all infrastructure code lives in repositories the client owns; changes go through reviewed pull requests; handover includes runbooks.
+
+Key pages:
+- Industries: https://prodory.com/industries/bfsi-fintech/ , https://prodory.com/industries/saas-digital-natives/ , https://prodory.com/industries/gcc-global-teams/
+- Delivery methodology: https://prodory.com/methodology/
+- Engagement models: https://prodory.com/engagement-models/
+- Architecture review (30 minutes): https://prodory.com/architecture-review/
+- Contact: https://prodory.com/contact/
+- About and registrations: https://prodory.com/about/
