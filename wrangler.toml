@@ -1,0 +1,10 @@
+# Cloudflare Pages project for prodory.com. Deployed by direct upload (no GitHub integration).
+# Secrets are NOT stored here. Set them with `wrangler pages secret put <NAME> --project-name prodory`.
+name = "prodory"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-11-01"
+
+[vars]
+# "1" logs instead of writing to the CRM and Mautic. Keep "1" until the end-to-end test passes.
+CRM_DRY_RUN = "1"
+MAUTIC_DRY_RUN = "1"

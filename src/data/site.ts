@@ -11,8 +11,8 @@ export const SITE = {
   registrations: ['DPIIT Startup India', 'UDYAM-MH-33-0401680'],
   location: 'Dombivli, Maharashtra, India',
   email: 'hello@prodory.com',
-  // Form endpoint: the Cloudflare Worker in /worker. Override per environment with PUBLIC_ENQUIRY_URL.
-  enquiryUrl: (import.meta.env.PUBLIC_ENQUIRY_URL as string | undefined) || 'https://prodory-enquiry.workers.dev/enquiry',
+  // Form endpoint: Cloudflare Pages Function in functions/api/enquiry.js (same origin, no CORS).
+  enquiryUrl: '/api/enquiry',
   primaryCta: { label: 'Book a 30-min architecture review', href: '/architecture-review/' },
 };
 

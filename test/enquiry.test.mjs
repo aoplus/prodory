@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validate, classify, BRAND_TAG } from '../src/enquiry.mjs';
-import { noteHtml, leadBody } from '../src/crm.mjs';
-import { handleEnquiry, rateOk } from '../src/handler.mjs';
+import { validate, classify, BRAND_TAG } from '../src/lib/enquiry.mjs';
+import { noteHtml, leadBody } from '../src/lib/crm.mjs';
+import { handleEnquiry, rateOk } from '../src/lib/handler.mjs';
 
 const good = {
   name: 'Asha Rao', company: 'Rao Components', email: 'Asha@Rao.in', phone: '+91 79778 75818',
@@ -70,11 +70,10 @@ test('pipeline in dry-run writes nothing and returns ok', async () => {
   assert.equal(out.body.ok, true);
 });
 
-test('CRM failure queues the enquiry and still returns ok to the visitor', async () => {
-  const queued = [];
+test('CRM failure returns 503 and tells the visitor to email, never a false success', async () => {
   const env = { CRM_AOPLUS_URL: 'http://127.0.0.1:9', CRM_AOPLUS_API_KEY: 'k', CRM_AOPLUS_API_SECRET: 's' };
-  const out = await handleEnquiry({ ...good, email: 'queued@example.com' }, { ip: 'q-' + Math.random(), env, enqueue: async (e) => queued.push(e) });
-  assert.equal(out.status, 200);
-  assert.equal(out.body.queued, true);
-  assert.equal(queued.length, 1);
+  const out = await handleEnquiry({ ...good, email: 'queued@example.com' }, { ip: 'q-' + Math.random(), env });
+  assert.equal(out.status, 503);
+  assert.equal(out.body.ok, false);
+  assert.match(out.body.error, /hello@prodory\.com/);
 });

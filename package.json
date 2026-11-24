@@ -1,7 +1,7 @@
 {
   "name": "prodory-site",
   "version": "0.2.0",
-  "description": "prodory.com: Astro static site (GitHub Pages) and the enquiry Worker in worker/ (CRM lead on crm.aoplus.in, Mautic for consented contacts)",
+  "description": "prodory.com: Astro static site and same-origin enquiry Pages Function (CRM lead on crm.aoplus.in, Mautic for consented contacts). Deployed to Cloudflare Pages.",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "test": "node --test worker/test/*.test.mjs"
+    "test": "node --test test/*.test.mjs"
   },
   "repository": {
     "type": "git",
